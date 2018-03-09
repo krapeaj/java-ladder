@@ -8,8 +8,11 @@ public class LadderGameMain {
         int ladderLength = Input.takeInt();
 
         Ladder lad = new Ladder(ladderLength,numberOfPeople);
-        lad.createLadder();
 
-        Output.printLadder(lad);
+        lad.assignRowsToLadder();
+
+        lad.printLadder();
+
+        //lad.testPrintBooleans();
     }
 }
