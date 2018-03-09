@@ -3,9 +3,9 @@ package ladder.game;
 public class LadderGameConsole {
     public static void main(String[] args) {
         int numberOfPeople = promptUserForNumberOfPeople();
-        int ladderLength = promptUserForLadderLength();
+        int ladderHeight = promptUserForLadderHeight();
 
-        Ladder ladder = new Ladder(ladderLength, numberOfPeople);
+        Ladder ladder = new Ladder(ladderHeight, numberOfPeople);
 
         printLadderString(ladder);
     }
@@ -15,7 +15,7 @@ public class LadderGameConsole {
         return Input.takeInt();
     }
 
-    private static int promptUserForLadderLength() {
+    private static int promptUserForLadderHeight() {
         Output.print("최대 사다리 높이는 몇 개 인가요?");
         return Input.takeInt();
     }

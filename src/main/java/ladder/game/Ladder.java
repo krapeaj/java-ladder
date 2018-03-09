@@ -1,80 +1,28 @@
 package ladder.game;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 public class Ladder {
+    private ArrayList<Row> ladder = new ArrayList<>();
 
-    private boolean[][] ladder;
-
-    Ladder(int ladderLength, int numberOfPeople) {
-        this.ladder = new boolean[ladderLength][numberOfPeople - 1];
-    }
-
-    private boolean[] createRowWithRandomBooleans() {
-        boolean[] row = new boolean[this.ladder[0].length];
-        Random random = new Random();
-
-        for (int i = 0; i < this.ladder[0].length; i++) {
-            row[i] = random.nextBoolean();
+    Ladder(int ladderHeight, int numberOfPeople) {
+        for (int i = 0; i < ladderHeight; i++) {
+            Row row = new Row(numberOfPeople);
+            this.ladder.add(row);
         }
-        return row;
-    }
-
-    private void assignRowsToLadder() {
-        for (int i = 0; i < this.ladder.length; i++) {
-            this.ladder[i] = createRowWithRandomBooleans();
-        }
-    }
-
-    private String returnLadderFrame() {
-        return "|";
-    }
-
-    private String returnLadderStep() {
-        return "-";
-    }
-
-    private String returnEmptyString() {
-        return " ";
-    }
-
-    private String returnNewLine() {
-        return "\n";
-    }
-
-    private void addStepString(boolean bool, StringBuilder builder) {
-        if (bool) {
-            builder.append(returnLadderFrame());
-            builder.append(returnLadderStep());
-        }
-    }
-
-    private void addEmptyString(boolean bool, StringBuilder builder) {
-        if (!bool) {
-            builder.append(returnLadderFrame());
-            builder.append(returnEmptyString());
-        }
-    }
-
-    private void buildRowString(boolean[] row, StringBuilder builder) {
-        for (boolean bool : row) {
-            addStepString(bool, builder);
-            addEmptyString(bool, builder);
-        }
-        builder.append(returnLadderFrame());
     }
 
     private String buildLadderString() {
         StringBuilder builder = new StringBuilder();
-        for (boolean[] row : this.ladder) {
-            buildRowString(row, builder);
-            builder.append(returnNewLine());
+        for (Row row : this.ladder) {
+            row.returnRowWithRandomBooleans(builder);
+            builder.append(Output.returnLadderFrame());
+            builder.append(Output.returnNewLine());
         }
         return builder.toString();
     }
 
     public String returnLadderString() {
-        assignRowsToLadder();
         return buildLadderString();
     }
 }
