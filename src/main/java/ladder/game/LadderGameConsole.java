@@ -7,8 +7,6 @@ public class LadderGameConsole {
 
         Ladder ladder = new Ladder(ladderLength, numberOfPeople);
 
-        ladder.assignRowsToLadder();
-
         printLadderString(ladder);
     }
 

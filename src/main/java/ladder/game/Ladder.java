@@ -20,7 +20,7 @@ public class Ladder {
         return row;
     }
 
-    public void assignRowsToLadder() {
+    private void assignRowsToLadder() {
         for (int i = 0; i < this.ladder.length; i++) {
             this.ladder[i] = createRowWithRandomBooleans();
         }
@@ -74,6 +74,7 @@ public class Ladder {
     }
 
     public String returnLadderString() {
+        assignRowsToLadder();
         return buildLadderString();
     }
 }
