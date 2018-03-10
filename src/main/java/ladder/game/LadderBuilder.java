@@ -9,20 +9,32 @@ public class LadderBuilder {
         //최대 이름 길이 구하기
         int maxNameLength = findMaxNameLength(playerNames);
 
-        //이름을 먼저 출력
+        //이름을 먼저 builder 에 더하기
+        addNameToStringBuilder(builder, playerNames, maxNameLength);
+
+        //새로운 행
+        builder.append("\n");
+
+        //각 행(row)을 builder 에 더하기
+        addRowsToStringBuilder(builder, ladder, maxNameLength);
+
+        return builder.toString();
+    }
+
+    private StringBuilder addNameToStringBuilder(StringBuilder builder, String[] playerNames, int maxNameLength){
         for (String name : playerNames) {
             builder.append(LadderFormat.formatNameString(name, maxNameLength));
         }
-        builder.append("\n");
+        return builder;
+    }
 
-        //행(row)을 출력
+    private StringBuilder addRowsToStringBuilder(StringBuilder builder, ArrayList<Row> ladder, int maxNameLength){
         for (Row row : ladder) {
-            buildRowWithRandomBooleans(row, maxNameLength, builder);
-
+            buildRowOfRandomBooleans(row, maxNameLength, builder);
             builder.append("|");
-            builder.append("\n");
+            builder.append("\n"); // 새로운 행
         }
-        return builder.toString();
+        return builder;
     }
 
     private int findMaxNameLength(String[] playerNames) {
@@ -41,7 +53,7 @@ public class LadderBuilder {
         return currentMax;
     }
 
-    private void buildRowWithRandomBooleans(Row row, int maxNameLength, StringBuilder builder) {
+    private void buildRowOfRandomBooleans(Row row, int maxNameLength, StringBuilder builder) {
         //add a space before each row for as many times as the max name length
         LadderFormat.formatRow(builder, maxNameLength);
         for (boolean bool : row.getRowOfRandomBooleans()) {
