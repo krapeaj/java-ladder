@@ -2,17 +2,18 @@ package ladder.game;
 
 public class LadderGameConsole {
     public static void main(String[] args) {
-        int numberOfPeople = promptUserForNumberOfPeople();
-        int ladderHeight = promptUserForLadderHeight();
-
-        Ladder ladder = new Ladder(ladderHeight, numberOfPeople);
-
-        printLadderString(ladder);
+        startGame();
     }
 
-    private static int promptUserForNumberOfPeople() {
-        Output.print("참여할 사람은 몇 명 인가요?");
-        return Input.takeInt();
+    private static void test() {
+        for (int i = 0; i < 1; i++) {
+            System.out.println("hi");
+        }
+    }
+
+    private static String promptUserForNames() {
+        Output.print("참여할 사람 이름을 입력하세요.");
+        return Input.takeString();
     }
 
     private static int promptUserForLadderHeight() {
@@ -20,7 +21,12 @@ public class LadderGameConsole {
         return Input.takeInt();
     }
 
-    private static void printLadderString(Ladder ladder) {
-        Output.print(ladder.returnLadderString());
+    private static void startGame() {
+        String playerNames = promptUserForNames();
+        int ladderHeight = promptUserForLadderHeight();
+        LadderGame ladderGame = new LadderGame(playerNames, ladderHeight);
+
+        String ladderString = ladderGame.buildLadder();
+        ladderGame.displayLadder(ladderString);
     }
 }

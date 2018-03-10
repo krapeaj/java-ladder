@@ -27,24 +27,7 @@ public class Row {
         return currentBool;
     }
 
-    public void returnRowWithRandomBooleans(StringBuilder builder) {
-        for (boolean bool : rowOfRandomBooleans) {
-            addStepString(bool, builder);
-            addEmptyString(bool, builder);
-        }
-    }
-
-    private void addStepString(Boolean bool, StringBuilder builder) {
-        if (bool) {
-            builder.append(Output.returnLadderFrame());
-            builder.append(Output.returnLadderStep());
-        }
-    }
-
-    private void addEmptyString(Boolean bool, StringBuilder builder) {
-        if (!bool) {
-            builder.append(Output.returnLadderFrame());
-            builder.append(Output.returnEmptyString());
-        }
+    public ArrayList<Boolean> getRowOfRandomBooleans() {
+        return this.rowOfRandomBooleans;
     }
 }
