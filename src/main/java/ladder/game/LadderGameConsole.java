@@ -5,12 +5,6 @@ public class LadderGameConsole {
         startGame();
     }
 
-    private static void test() {
-        for (int i = 0; i < 1; i++) {
-            System.out.println("hi");
-        }
-    }
-
     private static String promptUserForNames() {
         Output.print("참여할 사람 이름을 입력하세요.");
         return Input.takeString();
