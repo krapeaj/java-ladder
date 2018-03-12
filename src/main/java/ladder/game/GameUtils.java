@@ -13,11 +13,10 @@ public class GameUtils {
     }
 
     private static int compareLength(String name, int currentMax) {
-        if (name.length() > currentMax) {
-            currentMax = name.length();
+        if (name.length() <= currentMax) {
             return currentMax;
         }
-        return currentMax;
+        return name.length();
     }
 
     public static Boolean generateRandomBoolean(){
