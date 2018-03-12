@@ -1,33 +1,33 @@
 package ladder.game;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Row {
     private ArrayList<Boolean> rowOfRandomBooleans = new ArrayList<>();
 
     Row(int numberOfPeople) {
-        Random random = new Random();
-
         Boolean prevBool = false;
         for (int i = 0; i < numberOfPeople - 1; i++) {
-            prevBool = assignRandomBoolean(random, prevBool);
+            prevBool = assignRandomBoolean(prevBool);
         }
     }
 
-    private boolean assignRandomBoolean(Random random, Boolean prevBool) {
+    private boolean assignRandomBoolean(Boolean prevBool) {
         Boolean currentBool;
         if (prevBool) {
             currentBool = false;
             rowOfRandomBooleans.add(currentBool);
             return currentBool;
         }
-        currentBool = random.nextBoolean();
+        currentBool = GameUtils.generateRandomBoolean();
         rowOfRandomBooleans.add(currentBool);
         return currentBool;
     }
 
-    public ArrayList<Boolean> getRowOfRandomBooleans() {
-        return this.rowOfRandomBooleans;
+    public boolean isStep(int booleanPosition) {
+        if (this.rowOfRandomBooleans.get(booleanPosition)) {
+            return true;
+        }
+        return false;
     }
 }

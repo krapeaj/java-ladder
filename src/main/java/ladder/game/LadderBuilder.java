@@ -3,80 +3,72 @@ package ladder.game;
 import java.util.ArrayList;
 
 public class LadderBuilder {
+    private String[] playerNames;
+    private int maxNameLength;
 
-    public String buildLadderString(ArrayList<Row> ladder, String[] playerNames) {
-        StringBuilder builder = new StringBuilder();
-        //최대 이름 길이 구하기
-        int maxNameLength = findMaxNameLength(playerNames);
-
-        //이름을 먼저 builder 에 더하기
-        addNameToStringBuilder(builder, playerNames, maxNameLength);
-
-        //새로운 행
-        builder.append("\n");
-
-        //각 행(row)을 builder 에 더하기
-        addRowsToStringBuilder(builder, ladder, maxNameLength);
-
-        return builder.toString();
+    LadderBuilder(String[] playerNames) {
+        this.playerNames = playerNames;
+        this.maxNameLength = GameUtils.findMaxNameLength(playerNames);
     }
 
-    private StringBuilder addNameToStringBuilder(StringBuilder builder, String[] playerNames, int maxNameLength){
-        for (String name : playerNames) {
-            builder.append(LadderFormat.formatNameString(name, maxNameLength));
+    private StringBuilder appendStepOrSpace(Row row, StringBuilder builder, int booleanPosition) {
+        if (row.isStep(booleanPosition)) {
+            //최고 이름 길이에 맞게 "-" 더하기
+            LadderFormat.formatStepString(builder, this.maxNameLength);
+            return builder;
+        }
+        //최고 이름 길이에 맞게 " " 더하기
+        LadderFormat.formatSpaceString(builder, this.maxNameLength);
+        return builder;
+    }
+
+    private StringBuilder determineLadderPart(StringBuilder builder, Row row, int printCount) {
+        int booleanPosition = (printCount - 1) / 2;
+        if (printCount % 2 == 0) {
+            builder.append("|");
+            return builder;
+        }
+        appendStepOrSpace(row, builder, booleanPosition);
+        return builder;
+    }
+
+    private StringBuilder buildRowString(StringBuilder builder, Row row) {
+        //add a space before each row for as many times as the max name length
+        LadderFormat.formatRow(builder, this.maxNameLength);
+        final int NUMBER_OF_PRINTS = 2 * this.playerNames.length - 1;
+        for (int printCount = 0; printCount < NUMBER_OF_PRINTS; printCount++) {
+            determineLadderPart(builder, row, printCount);
         }
         return builder;
     }
 
-    private StringBuilder addRowsToStringBuilder(StringBuilder builder, ArrayList<Row> ladder, int maxNameLength){
+    private StringBuilder addRowsToString(StringBuilder builder, ArrayList<Row> ladder) {
         for (Row row : ladder) {
-            buildRowOfRandomBooleans(row, maxNameLength, builder);
-            builder.append("|");
+            buildRowString(builder, row);
             builder.append("\n"); // 새로운 행
         }
         return builder;
     }
 
-    private int findMaxNameLength(String[] playerNames) {
-        int currentMax = 0;
-        for (String name : playerNames) {
-            currentMax = compareLength(name, currentMax);
-        }
-        return currentMax;
-    }
-
-    private int compareLength(String name, int currentMax) {
-        if (name.length() > currentMax) {
-            currentMax = name.length();
-            return currentMax;
-        }
-        return currentMax;
-    }
-
-    private void buildRowOfRandomBooleans(Row row, int maxNameLength, StringBuilder builder) {
-        //add a space before each row for as many times as the max name length
-        LadderFormat.formatRow(builder, maxNameLength);
-        for (Boolean bool : row.getRowOfRandomBooleans()) {
-            addStepString(bool, builder, maxNameLength);
-            addEmptyString(bool, builder, maxNameLength);
-        }
-    }
-
-    private StringBuilder addStepString(Boolean bool, StringBuilder builder, int maxNameLength) {
-        if (bool) {
-            builder.append("|");
-            //format step string so it adapts to max name length
-            LadderFormat.formatStepString(builder, maxNameLength);
+    private StringBuilder addNamesToString(StringBuilder builder) {
+        for (String name : this.playerNames) {
+            builder.append(LadderFormat.formatNameString(name, this.maxNameLength));
         }
         return builder;
     }
 
-    private StringBuilder addEmptyString(Boolean bool, StringBuilder builder, int maxNameLength) {
-        if (!bool) {
-            builder.append("|");
-            //format empty string so it adapts to max name length
-            LadderFormat.formatEmptyString(builder, maxNameLength);
-        }
-        return builder;
+    public String buildLadderString(ArrayList<Row> ladder) {
+        StringBuilder builder = new StringBuilder();
+
+        //이름을 먼저 builder 에 더하기
+        addNamesToString(builder);
+
+        //새로운 행
+        builder.append("\n");
+
+        //각 행(row)을 builder 에 더하기
+        addRowsToString(builder, ladder);
+
+        return builder.toString();
     }
 }

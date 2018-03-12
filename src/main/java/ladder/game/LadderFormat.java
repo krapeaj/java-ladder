@@ -4,6 +4,7 @@ public class LadderFormat {
 
     public static String formatNameString(String name, int maxNameLength) {
         StringBuilder formattedName = new StringBuilder();
+
         for (int i = 0; i < maxNameLength - name.length() + 1; i++) {
             formattedName.append(" ");
         }
@@ -25,7 +26,7 @@ public class LadderFormat {
         return builder;
     }
 
-    public static StringBuilder formatEmptyString(StringBuilder builder, int maxNameLength) {
+    public static StringBuilder formatSpaceString(StringBuilder builder, int maxNameLength) {
         for (int i = 0; i < maxNameLength; i++) {
             builder.append(" ");
         }
