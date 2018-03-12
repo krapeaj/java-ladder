@@ -16,8 +16,8 @@ public class Ladder {
         StringBuilder builder = new StringBuilder();
         for (Row row : this.ladder) {
             row.returnRowWithRandomBooleans(builder);
-            builder.append(Output.returnLadderFrame());
-            builder.append(Output.returnNewLine());
+            builder.append("|");
+            builder.append("\n");
         }
         return builder.toString();
     }

@@ -15,8 +15,8 @@ public class Row {
         }
     }
 
-    private boolean assignRandomBoolean(Random random, boolean prevBool) {
-        boolean currentBool;
+    private boolean assignRandomBoolean(Random random, Boolean prevBool) {
+        Boolean currentBool;
         if (prevBool) {
             currentBool = false;
             rowOfRandomBooleans.add(currentBool);
@@ -28,7 +28,7 @@ public class Row {
     }
 
     public void returnRowWithRandomBooleans(StringBuilder builder) {
-        for (boolean bool : rowOfRandomBooleans) {
+        for (Boolean bool : rowOfRandomBooleans) {
             addStepString(bool, builder);
             addEmptyString(bool, builder);
         }
@@ -36,15 +36,15 @@ public class Row {
 
     private void addStepString(Boolean bool, StringBuilder builder) {
         if (bool) {
-            builder.append(Output.returnLadderFrame());
-            builder.append(Output.returnLadderStep());
+            builder.append("|");
+            builder.append("-");
         }
     }
 
     private void addEmptyString(Boolean bool, StringBuilder builder) {
         if (!bool) {
-            builder.append(Output.returnLadderFrame());
-            builder.append(Output.returnEmptyString());
+            builder.append("|");
+            builder.append(" ");
         }
     }
 }
