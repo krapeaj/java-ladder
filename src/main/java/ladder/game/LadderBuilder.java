@@ -56,7 +56,7 @@ public class LadderBuilder {
     private void buildRowOfRandomBooleans(Row row, int maxNameLength, StringBuilder builder) {
         //add a space before each row for as many times as the max name length
         LadderFormat.formatRow(builder, maxNameLength);
-        for (boolean bool : row.getRowOfRandomBooleans()) {
+        for (Boolean bool : row.getRowOfRandomBooleans()) {
             addStepString(bool, builder, maxNameLength);
             addEmptyString(bool, builder, maxNameLength);
         }

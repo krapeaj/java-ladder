@@ -15,8 +15,8 @@ public class Row {
         }
     }
 
-    private boolean assignRandomBoolean(Random random, boolean prevBool) {
-        boolean currentBool;
+    private boolean assignRandomBoolean(Random random, Boolean prevBool) {
+        Boolean currentBool;
         if (prevBool) {
             currentBool = false;
             rowOfRandomBooleans.add(currentBool);
