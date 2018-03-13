@@ -4,6 +4,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
+    private static final int CHAR_LIMIT = 5;
+    private static final int MIN_NUMBER_OF_NAMES = 2;
+
     public static int takeInt() {
         Scanner scan = new Scanner(System.in);
         try {
@@ -26,7 +29,6 @@ public class Input {
     }
 
     private static boolean isOverCharLimit(String[] names){
-        final int CHAR_LIMIT = 5;
         for(String name : names){
             if(name.length() > CHAR_LIMIT){
                 return true;
@@ -36,7 +38,6 @@ public class Input {
     }
 
     private static boolean isNotEnoughNames(String[] names){
-        final int MIN_NUMBER_OF_NAMES = 2;
 
         return names.length < MIN_NUMBER_OF_NAMES;
     }

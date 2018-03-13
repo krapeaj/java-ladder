@@ -4,6 +4,8 @@ import ladder.view.Input;
 import ladder.view.Output;
 
 public class LadderGameConsole {
+    private static final int MIN_HEIGHT = 2;
+
     public static void main(String[] args) {
         startGame();
     }
@@ -20,8 +22,6 @@ public class LadderGameConsole {
     }
 
     private static int promptUserForLadderHeight() {
-        final int MIN_HEIGHT = 2;
-
         Output.print("최대 사다리 높이는 몇 개 인가요?");
         int userInput = Input.takeInt();
         while (userInput <= MIN_HEIGHT) {
