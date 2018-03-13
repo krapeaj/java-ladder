@@ -13,13 +13,13 @@ public class LadderGame {
 
         for (int i = 0; i < ladderHeight; i++) {
             Row row = new Row(playerNames.length);
-            this.ladder.add(row);
+            ladder.add(row);
         }
     }
 
     String buildLadder() {
-        LadderBuilder ladderBuilder = new LadderBuilder(playerNames);
-        return ladderBuilder.buildLadderString(this.ladder, playerNames);
+        LadderBuilder ladderBuilder = new LadderBuilder();
+        return ladderBuilder.buildLadderString(ladder, playerNames);
     }
 
     void displayLadder(String ladderString) {
