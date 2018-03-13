@@ -18,8 +18,7 @@ public class LadderGame {
     }
 
     String buildLadder() {
-        LadderBuilder ladderBuilder = new LadderBuilder();
-        return ladderBuilder.buildLadderString(ladder, playerNames);
+        return LadderBuilder.buildLadderString(ladder, playerNames);
     }
 
     void displayLadder(String ladderString) {
