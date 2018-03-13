@@ -8,7 +8,6 @@ public class LadderFormat {
         for (int i = 0; i < maxNameLength - name.length() + 1; i++) {
             formattedName.append(" ");
         }
-        formattedName.append(name);
         return formattedName.toString();
     }
 

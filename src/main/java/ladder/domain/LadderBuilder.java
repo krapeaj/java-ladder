@@ -6,28 +6,28 @@ public class LadderBuilder {
 
     private static StringBuilder builder = new StringBuilder();
 
-    private static StringBuilder appendStepOrSpace(Row row, int maxNameLength, int booleanPosition) {
+    private static String appendStepOrSpace(Row row, int maxNameLength, int booleanPosition) {
         if (row.isStep(booleanPosition)) {
             //최고 이름 길이에 맞게 "-" 더하기
             LadderFormat.formatStepString(builder, maxNameLength);
-            return builder;
+            return builder.toString();
         }
         //최고 이름 길이에 맞게 " " 더하기
         LadderFormat.formatSpaceString(builder, maxNameLength);
-        return builder;
+        return builder.toString();
     }
 
-    private static StringBuilder determineLadderPart(Row row, int maxNameLength, int printCount) {
+    private static String determineLadderPart(Row row, int maxNameLength, int printCount) {
         int booleanPosition = (printCount - 1) / 2;
         if (printCount % 2 == 0) {
             builder.append("|");
-            return builder;
+            return builder.toString();
         }
         appendStepOrSpace(row, maxNameLength, booleanPosition);
-        return builder;
+        return builder.toString();
     }
 
-    private static StringBuilder buildRowString(Row row, String[] playerNames, int maxNameLength) {
+    private static String buildRowString(Row row, String[] playerNames, int maxNameLength) {
         //add a space before each row for as many times as the max name length
         LadderFormat.formatRow(builder, maxNameLength);
 
@@ -36,23 +36,24 @@ public class LadderBuilder {
         for (int printCount = 0; printCount < NUMBER_OF_PRINTS; printCount++) {
             determineLadderPart(row, maxNameLength, printCount);
         }
-        return builder;
+        return builder.toString();
     }
 
-    static StringBuilder addRowsToString(ArrayList<Row> ladder, String[] playerNames, int maxNameLength) {
+    private static String addRowsToString(ArrayList<Row> ladder, String[] playerNames, int maxNameLength) {
         for (Row row : ladder) {
             buildRowString(row, playerNames, maxNameLength);
             builder.append("\n"); // 새로운 행
         }
-        return builder;
+        return builder.toString();
     }
 
-    static StringBuilder addNamesToString(String[] playerNames, int maxNameLength) {
+    static String addNamesToString(String[] playerNames, int maxNameLength) {
 
         for (String name : playerNames) {
             builder.append(LadderFormat.formatNameString(name, maxNameLength));
+            builder.append(name);
         }
-        return builder;
+        return builder.toString();
     }
 
     static String buildLadderString(ArrayList<Row> ladder, String[] playerNames) {
