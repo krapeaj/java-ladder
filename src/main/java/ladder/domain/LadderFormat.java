@@ -12,24 +12,24 @@ public class LadderFormat {
         return formattedName.toString();
     }
 
-    static StringBuilder formatRow(StringBuilder builder, int maxNameLength) {
+    static String formatRow(StringBuilder builder, int maxNameLength) {
         for (int i = 0; i < maxNameLength; i++) {
             builder.append(" ");
         }
-        return builder;
+        return builder.toString();
     }
 
-    static StringBuilder formatStepString(StringBuilder builder, int maxNameLength) {
+    static String formatStepString(StringBuilder builder, int maxNameLength) {
         for (int i = 0; i < maxNameLength; i++) {
             builder.append("-");
         }
-        return builder;
+        return builder.toString();
     }
 
-    static StringBuilder formatSpaceString(StringBuilder builder, int maxNameLength) {
+    static String formatSpaceString(StringBuilder builder, int maxNameLength) {
         for (int i = 0; i < maxNameLength; i++) {
             builder.append(" ");
         }
-        return builder;
+        return builder.toString();
     }
 }
