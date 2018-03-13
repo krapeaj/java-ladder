@@ -3,12 +3,10 @@ package ladder.domain;
 import java.util.ArrayList;
 
 public class LadderBuilder {
-    private String[] playerNames;
     private int maxNameLength;
     private static StringBuilder builder = new StringBuilder();
 
     LadderBuilder(String[] playerNames) {
-        this.playerNames = playerNames;
         this.maxNameLength = GameUtils.findMaxNameLength(playerNames);
     }
 
@@ -33,10 +31,10 @@ public class LadderBuilder {
         return builder;
     }
 
-    private StringBuilder buildRowString(Row row) {
+    private StringBuilder buildRowString(Row row, String[] playerNames) {
         //add a space before each row for as many times as the max name length
         LadderFormat.formatRow(builder, maxNameLength);
-        final int NUMBER_OF_PRINTS = 2 * this.playerNames.length - 1;
+        final int NUMBER_OF_PRINTS = 2 * playerNames.length - 1;
 
         for (int printCount = 0; printCount < NUMBER_OF_PRINTS; printCount++) {
             determineLadderPart(row, printCount);
@@ -44,30 +42,30 @@ public class LadderBuilder {
         return builder;
     }
 
-    private StringBuilder addRowsToString(ArrayList<Row> ladder) {
+    private StringBuilder addRowsToString(ArrayList<Row> ladder, String[] playerNames) {
         for (Row row : ladder) {
-            buildRowString(row);
+            buildRowString(row, playerNames);
             builder.append("\n"); // 새로운 행
         }
         return builder;
     }
 
-    private StringBuilder addNamesToString() {
-        for (String name : this.playerNames) {
+    StringBuilder addNamesToString(String[] playerNames) {
+        for (String name : playerNames) {
             builder.append(LadderFormat.formatNameString(name, maxNameLength));
         }
         return builder;
     }
 
-    public String buildLadderString(ArrayList<Row> ladder) {
+    String buildLadderString(ArrayList<Row> ladder, String[] playerNames) {
         //이름을 먼저 builder 에 더하기
-        addNamesToString();
+        addNamesToString(playerNames);
 
         //새로운 행
         builder.append("\n");
 
         //각 행(row)을 builder 에 더하기
-        addRowsToString(ladder);
+        addRowsToString(ladder, playerNames);
 
         return builder.toString();
     }

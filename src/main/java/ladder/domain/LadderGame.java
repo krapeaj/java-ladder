@@ -17,12 +17,12 @@ public class LadderGame {
         }
     }
 
-    public String buildLadder() {
-        LadderBuilder ladderBuilder = new LadderBuilder(this.playerNames);
-        return ladderBuilder.buildLadderString(this.ladder);
+    String buildLadder() {
+        LadderBuilder ladderBuilder = new LadderBuilder(playerNames);
+        return ladderBuilder.buildLadderString(this.ladder, playerNames);
     }
 
-    public void displayLadder(String ladderString) {
+    void displayLadder(String ladderString) {
         Output.print(ladderString);
     }
 }

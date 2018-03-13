@@ -3,7 +3,7 @@ package ladder.domain;
 import java.util.ArrayList;
 
 public class Row {
-    private ArrayList<Boolean> rowOfRandomBooleans = new ArrayList<>();
+    private ArrayList<Boolean> booleanRow = new ArrayList<>();
 
     Row(int numberOfPeople) {
         Boolean prevBool = false;
@@ -16,18 +16,19 @@ public class Row {
         Boolean currentBool;
         if (prevBool) {
             currentBool = false;
-            rowOfRandomBooleans.add(currentBool);
+            booleanRow.add(currentBool);
             return currentBool;
         }
         currentBool = GameUtils.generateRandomBoolean();
-        rowOfRandomBooleans.add(currentBool);
+        booleanRow.add(currentBool);
         return currentBool;
     }
 
-    public boolean isStep(int booleanPosition) {
-        if (this.rowOfRandomBooleans.get(booleanPosition)) {
-            return true;
-        }
-        return false;
+    boolean isStep(int booleanPosition) {
+        return booleanRow.get(booleanPosition);
+    }
+
+    ArrayList<Boolean> getRow() {
+        return booleanRow;
     }
 }
