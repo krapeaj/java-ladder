@@ -12,32 +12,11 @@ public class LadderGameConsole {
         Output.print("참여할 사람 이름을 쉼표(,)를 기준으로 입력하세요.");
         String nameString = Input.takeString();
 
-        while (isNotValidString(nameString)) {
-            Output.print("최소 두 이름을 입력해주세요.");
+        while (Input.isNotValidString(nameString)) {
+            Output.print("다섯 글자 이하인 이름을 최소 두 개 입력해주세요.");
             nameString = Input.takeString();
         }
         return nameString;
-    }
-
-    private static boolean isNotValidString(String nameString) {
-        final int MAX_NUMBER_OF_CHAR = 5;
-        String[] names = nameString.split(",");
-        return isNotEnoughNames(names);
-
-        for(String name : names){
-            if(name.length() > MAX_NUMBER_OF_CHAR){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean isNotEnoughNames(String[] names){
-        final int MIN_NUMBER_OF_NAMES = 2;
-        if(names.length < MIN_NUMBER_OF_NAMES){
-            return true;
-        }
-        return false;
     }
 
     private static int promptUserForLadderHeight() {
