@@ -2,7 +2,6 @@ package ladder.domain;
 
 import java.util.Random;
 
-
 public class GameUtils {
 
     public static int findMaxNameLength(String[] playerNames) {
