@@ -1,4 +1,4 @@
-package ladder.game;
+package ladder.view;
 
 public class Output {
     public static void print(String string) {

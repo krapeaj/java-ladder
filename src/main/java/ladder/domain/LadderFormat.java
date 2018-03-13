@@ -1,4 +1,4 @@
-package ladder.game;
+package ladder.domain;
 
 public class LadderFormat {
 

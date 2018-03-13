@@ -1,4 +1,4 @@
-package ladder.game;
+package ladder.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

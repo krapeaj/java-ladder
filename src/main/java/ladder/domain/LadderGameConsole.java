@@ -1,4 +1,7 @@
-package ladder.game;
+package ladder.domain;
+
+import ladder.view.Input;
+import ladder.view.Output;
 
 public class LadderGameConsole {
     public static void main(String[] args) {
@@ -17,8 +20,21 @@ public class LadderGameConsole {
     }
 
     private static boolean isNotValidString(String nameString) {
+        final int MAX_NUMBER_OF_CHAR = 5;
+        String[] names = nameString.split(",");
+        return isNotEnoughNames(names);
+
+        for(String name : names){
+            if(name.length() > MAX_NUMBER_OF_CHAR){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isNotEnoughNames(String[] names){
         final int MIN_NUMBER_OF_NAMES = 2;
-        if (nameString.split(",").length < MIN_NUMBER_OF_NAMES) {
+        if(names.length < MIN_NUMBER_OF_NAMES){
             return true;
         }
         return false;

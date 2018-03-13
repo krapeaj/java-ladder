@@ -1,4 +1,6 @@
-package ladder.game;
+package ladder.domain;
+
+import ladder.view.Output;
 
 import java.util.ArrayList;
 
