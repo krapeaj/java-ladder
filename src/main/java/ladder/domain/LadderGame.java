@@ -8,7 +8,7 @@ public class LadderGame {
     private ArrayList<Row> ladder = new ArrayList<>();
     private String[] playerNames;
 
-    LadderGame(String names, int ladderHeight) {
+    public LadderGame(String names, int ladderHeight) {
         this.playerNames = names.split(",");
 
         for (int i = 0; i < ladderHeight; i++) {
@@ -17,11 +17,11 @@ public class LadderGame {
         }
     }
 
-    String buildLadder() {
+    public String buildLadder() {
         return LadderBuilder.buildLadderString(ladder, playerNames);
     }
 
-    void displayLadder(String ladderString) {
+    public void displayLadder(String ladderString) {
         Output.print(ladderString);
     }
 }
