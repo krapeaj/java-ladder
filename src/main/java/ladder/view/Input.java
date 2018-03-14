@@ -14,12 +14,9 @@ public class Input {
         Scanner scan = new Scanner(System.in);
         try {
             return scan.nextInt();
-        }
-        catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("숫자를 입력해주세요.");
             return takeInt();
         }
     }
-
-
 }

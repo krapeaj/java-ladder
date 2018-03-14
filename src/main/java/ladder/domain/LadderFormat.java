@@ -2,31 +2,32 @@ package ladder.domain;
 
 public class LadderFormat {
 
-    static String formatNameString(String name, int maxNameLength) {
-        StringBuilder formattedName = new StringBuilder();
-
-        for (int i = 0; i < maxNameLength - name.length() + 1; i++) {
-            formattedName.append(" ");
+    static String formatNameString(LadderDTO dto, String name) {
+        for (int i = 0; i < dto.getMaxNameLength() - name.length() + 1; i++) {
+            dto.getBuilder().append(" ");
         }
-        return formattedName.toString();
+        return dto.getBuilder().toString();
     }
 
-    static String formatRow(StringBuilder builder, int maxNameLength) {
-        for (int i = 0; i < maxNameLength; i++) {
+    static String formatRow(LadderDTO dto) {
+        StringBuilder builder = dto.getBuilder();
+        for (int i = 0; i < dto.getMaxNameLength(); i++) {
             builder.append(" ");
         }
         return builder.toString();
     }
 
-    static String formatStepString(StringBuilder builder, int maxNameLength) {
-        for (int i = 0; i < maxNameLength; i++) {
+    static String formatStepString(LadderDTO dto) {
+        StringBuilder builder = dto.getBuilder();
+        for (int i = 0; i < dto.getMaxNameLength(); i++) {
             builder.append("-");
         }
         return builder.toString();
     }
 
-    static String formatSpaceString(StringBuilder builder, int maxNameLength) {
-        for (int i = 0; i < maxNameLength; i++) {
+    static String formatSpaceString(LadderDTO dto) {
+        StringBuilder builder = dto.getBuilder();
+        for (int i = 0; i < dto.getMaxNameLength(); i++) {
             builder.append(" ");
         }
         return builder.toString();

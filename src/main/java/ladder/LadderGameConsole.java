@@ -5,8 +5,6 @@ import ladder.domain.LadderGame;
 import ladder.view.Input;
 import ladder.view.Output;
 
-import java.util.InputMismatchException;
-
 public class LadderGameConsole {
 
     public static void main(String[] args) {
@@ -26,11 +24,11 @@ public class LadderGameConsole {
         Output.askForPlayerNames();
         String names = Input.takeString();
 
-        if(GameUtils.isNotEnoughNames(names)){
+        if (GameUtils.isNotEnoughNames(names)) {
             Output.printNotEnoughNames();
             return promptUserForNames();
         }
-        if(GameUtils.isOverCharLimit(names)){
+        if (GameUtils.isOverCharLimit(names)) {
             Output.printOverMaxChars();
             return promptUserForNames();
         }
@@ -40,14 +38,10 @@ public class LadderGameConsole {
     private static int promptUserForLadderHeight() {
         Output.askForLadderHeight();
         int ladderHeight = Input.takeInt();
-        if(GameUtils.isUnderMinHeight(ladderHeight)){
+        if (GameUtils.isUnderMinHeight(ladderHeight)) {
             Output.printUnderMinHeight();
             return promptUserForLadderHeight();
         }
         return ladderHeight;
     }
-
-
-
-
 }
