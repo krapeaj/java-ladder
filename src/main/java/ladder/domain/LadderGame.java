@@ -20,11 +20,11 @@ public class LadderGame {
         dto.setLadder(ladder);
     }
 
-    public String buildLadder() {
-        return LadderBuilder.buildLadderString(dto);
+    public String startBuild() {
+        return LadderBuilder.buildLadder(dto);
     }
 
-    public void displayLadder(String ladderString) {
-        Output.printLadder(ladderString);
+    public void displayLadder(String ladder) {
+        Output.printLadder(ladder);
     }
 }

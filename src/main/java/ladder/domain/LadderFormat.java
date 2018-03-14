@@ -2,7 +2,7 @@ package ladder.domain;
 
 public class LadderFormat {
 
-    static String formatNameString(LadderDTO dto, String name) {
+    static String formatName(LadderDTO dto, String name) {
         for (int i = 0; i < dto.getMaxNameLength() - name.length() + 1; i++) {
             dto.getBuilder().append(" ");
         }

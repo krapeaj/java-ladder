@@ -22,7 +22,7 @@ public class Output {
         System.out.print("2보다 큰 숫자를 입력해주세요. ");
     }
 
-    public static void printLadder(String string) {
-        System.out.println(string);
+    public static void printLadder(String ladder) {
+        System.out.println(ladder);
     }
 }

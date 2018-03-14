@@ -15,12 +15,12 @@ public class LadderFormatTest {
 
     @Test
     public void formatNameStringMax5() {
-        assertEquals("   ", LadderFormat.formatNameString("Jae", 5));
+        assertEquals("   ", LadderFormat.formatName("Jae", 5));
     }
 
     @Test
     public void formatNameStringMax3() {
-        assertEquals(" ", LadderFormat.formatNameString("Jae", 3));
+        assertEquals(" ", LadderFormat.formatName("Jae", 3));
     }
 
     @Test

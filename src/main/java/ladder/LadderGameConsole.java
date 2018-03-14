@@ -16,13 +16,13 @@ public class LadderGameConsole {
         int ladderHeight = promptUserForLadderHeight();
         LadderGame ladderGame = new LadderGame(playerNames, ladderHeight);
 
-        String ladderString = ladderGame.buildLadder();
+        String ladderString = ladderGame.startBuild();
         ladderGame.displayLadder(ladderString);
     }
 
     private static String promptUserForNames() {
         Output.askForPlayerNames();
-        String names = Input.takeString();
+        String names = Input.takeNames();
 
         if (GameUtils.isNotEnoughNames(names)) {
             Output.printNotEnoughNames();
@@ -37,7 +37,7 @@ public class LadderGameConsole {
 
     private static int promptUserForLadderHeight() {
         Output.askForLadderHeight();
-        int ladderHeight = Input.takeInt();
+        int ladderHeight = Input.takeHeight();
         if (GameUtils.isUnderMinHeight(ladderHeight)) {
             Output.printUnderMinHeight();
             return promptUserForLadderHeight();

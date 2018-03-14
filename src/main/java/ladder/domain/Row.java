@@ -8,16 +8,16 @@ public class Row {
     Row(int numberOfPeople) {
         Boolean bool = false;
         for (int i = 0; i < numberOfPeople - 1; i++) {
-            bool = assignRandomBoolean(bool);
+            bool = assignRandomBool(bool);
             rowOfRandomBools.add(bool);
         }
     }
 
-    private boolean assignRandomBoolean(Boolean bool) {
+    private boolean assignRandomBool(Boolean bool) {
         if (bool) {
             return false;
         }
-        return GameUtils.generateRandomBoolean();
+        return GameUtils.generateRandomBools();
     }
 
     boolean isStep(int booleanPosition) {

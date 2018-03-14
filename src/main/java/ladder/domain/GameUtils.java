@@ -42,7 +42,7 @@ public class GameUtils {
         return name.length();
     }
 
-    public static Boolean generateRandomBoolean() {
+    public static Boolean generateRandomBools() {
         Random random = new Random();
         return random.nextBoolean();
     }

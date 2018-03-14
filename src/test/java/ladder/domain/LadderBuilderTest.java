@@ -18,6 +18,6 @@ public class LadderBuilderTest {
     @Test
     public void addNamesToString() {
         int maxNameLength = "Colin".length();
-        assertEquals(" Colin   Jae  Pobi", LadderBuilder.addNamesToString(names, maxNameLength));
+        assertEquals(" Colin   Jae  Pobi", LadderBuilder.addNamesToBuilder(names, maxNameLength));
     }
 }
