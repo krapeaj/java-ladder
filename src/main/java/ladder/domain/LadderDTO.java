@@ -1,26 +1,37 @@
 package ladder.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LadderDTO {
-    private String[] playerNames;
-    private ArrayList<Row> ladder = new ArrayList<>();
+    private List<Player> players = new ArrayList<>();
+    private List<Prize> prizes = new ArrayList<>();
+    private List<Row> ladder = new ArrayList<>();
     private StringBuilder builder;
     private int maxNameLength;
 
-    public void setPlayerNames(String[] playerNames) {
-        this.playerNames = playerNames;
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 
-    public String[] getPlayerNames() {
-        return playerNames;
+    public List<Player> getPlayers() {
+        return players;
     }
 
-    public void setLadder(ArrayList<Row> ladder) {
+    public void setPrizes(List<Prize> prizes) {
+        this.prizes = prizes;
+    }
+
+    public List<Prize> getPrizes() {
+        return prizes;
+    }
+
+    public void setLadder(List<Row> ladder) {
         this.ladder = ladder;
     }
 
-    public ArrayList<Row> getLadder() {
+    public List<Row> getLadder() {
         return ladder;
     }
 

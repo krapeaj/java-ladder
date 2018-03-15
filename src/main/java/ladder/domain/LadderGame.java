@@ -4,18 +4,32 @@ import ladder.view.LadderBuilder;
 import ladder.view.Output;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class LadderGame {
     LadderDTO dto = new LadderDTO();
 
-    public LadderGame(String names, int ladderHeight) {
-        String[] playerNames = names.split(",\\s*");
-        ArrayList<Row> ladder = new ArrayList<>();
+    public LadderGame(String names, String inputPrizes, int ladderHeight) {
+        List<Player> players = new ArrayList<>();
+        Player player;
+        for(String name : names.split(",\\s*")){
+            player = new Player(name);
+            players.add(player);
+        }
+        dto.setPlayers(players);
 
-        dto.setPlayerNames(playerNames);
+        List<Prize> prizes = new ArrayList<>();
+        Prize prize;
+        for(String item : inputPrizes.split(",\\s*")){
+            prize = new Prize(item);
+            prizes.add(prize);
+        }
+        dto.setPrizes(prizes);
 
+        List<Row> ladder = new ArrayList<>();
         for (int i = 0; i < ladderHeight; i++) {
-            Row row = new Row(playerNames.length);
+            Row row = new Row(dto.getPlayers().size());
             ladder.add(row);
         }
         dto.setLadder(ladder);

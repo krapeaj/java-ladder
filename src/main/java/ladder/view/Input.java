@@ -10,6 +10,11 @@ public class Input {
         return scan.next();
     }
 
+    public static String takePrizes(){
+        Scanner scan = new Scanner(System.in);
+        return scan.next();
+    }
+
     public static int takeHeight() {
         Scanner scan = new Scanner(System.in);
         try {

@@ -14,8 +14,9 @@ public class LadderGameConsole {
 
     private static void startGame() {
         String playerNames = promptUserForNames();
+        String prizes = promptUserForPrizes();
         int ladderHeight = promptUserForLadderHeight();
-        LadderGame ladderGame = new LadderGame(playerNames, ladderHeight);
+        LadderGame ladderGame = new LadderGame(playerNames, prizes, ladderHeight);
 
         LadderDTO dto = ladderGame.startBuild();
         Output.printLadder(dto);
@@ -34,6 +35,21 @@ public class LadderGameConsole {
             return promptUserForNames();
         }
         return names;
+    }
+
+    private static String promptUserForPrizes(){
+        Output.askForPrizes();
+        String prizes = Input.takePrizes();
+
+        if (GameUtils.isNotEnoughNames(prizes)) {
+            Output.printNotEnoughNames();
+            return promptUserForNames();
+        }
+        if (GameUtils.isOverCharLimit(prizes)) {
+            Output.printOverMaxChars();
+            return promptUserForNames();
+        }
+        return prizes;
     }
 
     private static int promptUserForLadderHeight() {

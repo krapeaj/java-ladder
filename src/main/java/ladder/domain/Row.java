@@ -1,9 +1,10 @@
 package ladder.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Row {
-    private ArrayList<Boolean> rowOfRandomBools = new ArrayList<>();
+    private List<Boolean> rowOfRandomBools = new ArrayList<>();
 
     Row(int numberOfPeople) {
         Boolean bool = false;
@@ -28,7 +29,7 @@ public class Row {
         return rowOfRandomBools.get(booleanPosition);
     }
 
-    ArrayList<Boolean> getRow() {
+    List<Boolean> getRow() {
         return rowOfRandomBools;
     }
 }
