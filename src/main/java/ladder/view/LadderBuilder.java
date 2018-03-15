@@ -6,9 +6,9 @@ import ladder.domain.Row;
 
 public class LadderBuilder {
 
-    private static String appendStepOrSpace(LadderDTO dto, Row row, int boolPosition) {
+    private static String appendStepOrSpace(LadderDTO dto, Row row, int col) {
         StringBuilder builder = dto.getBuilder();
-        if (row.isStep(boolPosition)) {
+        if (row.isStep(col)) {
             //최고 이름 길이에 맞게 "-" 더하기
             GameUtils.formatStepString(dto);
             return builder.toString();
@@ -18,25 +18,23 @@ public class LadderBuilder {
         return builder.toString();
     }
 
-    private static String determineLadderPart(LadderDTO dto, Row row, int printCount) {
+    private static String determineLadderPart(LadderDTO dto, Row row, int col) {
         StringBuilder builder = dto.getBuilder();
-        int boolPosition = (printCount - 1) / 2;
-        if (printCount % 2 == 0) {
+        if (col % 2 == 0) {
             builder.append("|");
             return builder.toString();
         }
-        appendStepOrSpace(dto, row, boolPosition);
+        appendStepOrSpace(dto, row, col);
         return builder.toString();
     }
 
     private static String buildRow(LadderDTO dto, Row row) {
         //add a space before each row for as many times as the max name length
         GameUtils.formatRow(dto);
-
+        final int rowLength = 2 * dto.getPlayerNames().length - 1;
         //append ladder parts to string
-        final int NUMBER_OF_PRINTS = 2 * dto.getPlayerNames().length - 1;
-        for (int printCount = 0; printCount < NUMBER_OF_PRINTS; printCount++) {
-            determineLadderPart(dto, row, printCount);
+        for (int col = 0; col < rowLength; col++) {
+            determineLadderPart(dto, row, col);
         }
         return dto.getBuilder().toString();
     }

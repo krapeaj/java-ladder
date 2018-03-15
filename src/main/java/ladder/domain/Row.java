@@ -7,7 +7,11 @@ public class Row {
 
     Row(int numberOfPeople) {
         Boolean bool = false;
-        for (int i = 0; i < numberOfPeople - 1; i++) {
+        for (int i = 0; i < 2 * numberOfPeople - 1; i++){
+            if(i % 2 == 0){
+                rowOfRandomBools.add(true);
+                continue;
+            }
             bool = assignRandomBool(bool);
             rowOfRandomBools.add(bool);
         }
