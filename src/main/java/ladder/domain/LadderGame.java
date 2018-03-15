@@ -1,5 +1,6 @@
 package ladder.domain;
 
+import ladder.view.LadderBuilder;
 import ladder.view.Output;
 
 import java.util.ArrayList;
@@ -20,11 +21,7 @@ public class LadderGame {
         dto.setLadder(ladder);
     }
 
-    public String startBuild() {
+    public LadderDTO startBuild() {
         return LadderBuilder.buildLadder(dto);
-    }
-
-    public void displayLadder(String ladder) {
-        Output.printLadder(ladder);
     }
 }

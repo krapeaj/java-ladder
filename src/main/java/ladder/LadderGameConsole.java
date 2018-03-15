@@ -1,6 +1,7 @@
 package ladder;
 
 import ladder.domain.GameUtils;
+import ladder.domain.LadderDTO;
 import ladder.domain.LadderGame;
 import ladder.view.Input;
 import ladder.view.Output;
@@ -16,8 +17,8 @@ public class LadderGameConsole {
         int ladderHeight = promptUserForLadderHeight();
         LadderGame ladderGame = new LadderGame(playerNames, ladderHeight);
 
-        String ladderString = ladderGame.startBuild();
-        ladderGame.displayLadder(ladderString);
+        LadderDTO dto = ladderGame.startBuild();
+        Output.printLadder(dto);
     }
 
     private static String promptUserForNames() {

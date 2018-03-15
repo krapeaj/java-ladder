@@ -4,52 +4,54 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static ladder.domain.LadderFormat.*;
 
 public class LadderFormatTest {
     private StringBuilder builder;
+    private LadderDTO dto;
 
     @Before
     public void setUp() {
-        builder = new StringBuilder();
+        dto.setBuilder(builder);
     }
 
     @Test
     public void formatNameStringMax5() {
-        assertEquals("   ", LadderFormat.formatName("Jae", 5));
+        assertEquals("   ", formatName(dto, "Jae"));
     }
 
     @Test
     public void formatNameStringMax3() {
-        assertEquals(" ", LadderFormat.formatName("Jae", 3));
+        assertEquals(" ", formatName(dto, "Jae"));
     }
 
     @Test
     public void formatRowMax5() {
-        assertEquals("     ", LadderFormat.formatRow(builder, 5));
+        assertEquals("     ", formatRow(dto));
     }
 
     @Test
     public void formatRowMax3() {
-        assertEquals("   ", LadderFormat.formatRow(builder, 3));
+        assertEquals("   ", formatRow(dto));
     }
 
     @Test
     public void formatStepStringMax5() {
-        assertEquals("-----", LadderFormat.formatStepString(builder, 5));
+        assertEquals("-----", formatStepString(dto));
     }
 
     @Test
     public void formatStepStringMax3() {
-        assertEquals("---", LadderFormat.formatStepString(builder, 3));
+        assertEquals("---", formatStepString(dto));
     }
 
     @Test
     public void formatSpaceStringMax5() {
-        assertEquals("     ", LadderFormat.formatSpaceString(builder, 5));
+        assertEquals("     ", formatSpaceString(dto));
     }
 
     @Test
     public void formatSpaceStringMax3() {
-        assertEquals("   ", LadderFormat.formatSpaceString(builder, 3));
+        assertEquals("   ", formatSpaceString(dto));
     }
 }

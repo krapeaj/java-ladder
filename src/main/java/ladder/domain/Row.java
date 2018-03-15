@@ -20,7 +20,7 @@ public class Row {
         return GameUtils.generateRandomBools();
     }
 
-    boolean isStep(int booleanPosition) {
+    public boolean isStep(int booleanPosition) {
         return rowOfRandomBools.get(booleanPosition);
     }
 

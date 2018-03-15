@@ -1,4 +1,9 @@
-package ladder.domain;
+package ladder.view;
+
+import ladder.domain.GameUtils;
+import ladder.domain.LadderDTO;
+import ladder.domain.LadderFormat;
+import ladder.domain.Row;
 
 public class LadderBuilder {
 
@@ -56,7 +61,7 @@ public class LadderBuilder {
         return builder.toString();
     }
 
-    static String buildLadder(LadderDTO dto) {
+    public static LadderDTO buildLadder(LadderDTO dto) {
         GameUtils.findMaxNameLength(dto);
         dto.setBuilder(new StringBuilder());
 
@@ -69,6 +74,6 @@ public class LadderBuilder {
         //각 행(row)을 builder 에 더하기
         addRowsToBuilder(dto);
 
-        return dto.getBuilder().toString();
+        return dto;
     }
 }

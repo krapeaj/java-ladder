@@ -1,5 +1,7 @@
 package ladder.view;
 
+import ladder.domain.LadderDTO;
+
 public class Output {
 
     public static void askForPlayerNames() {
@@ -22,7 +24,7 @@ public class Output {
         System.out.print("2보다 큰 숫자를 입력해주세요. ");
     }
 
-    public static void printLadder(String ladder) {
-        System.out.println(ladder);
+    public static void printLadder(LadderDTO dto) {
+        System.out.println(dto.getBuilder().toString());
     }
 }
