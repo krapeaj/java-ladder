@@ -1,7 +1,6 @@
 package ladder.view;
 
 import ladder.domain.GameUtils;
-import ladder.domain.LadderDTO;
 import ladder.domain.Row;
 
 public class LadderBuilder {

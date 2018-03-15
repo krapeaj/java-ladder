@@ -1,7 +1,5 @@
 package ladder.view;
 
-import ladder.domain.LadderDTO;
-
 public class Output {
 
     public static void askForPlayerNames() {
