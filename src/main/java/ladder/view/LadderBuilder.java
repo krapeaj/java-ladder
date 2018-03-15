@@ -2,7 +2,6 @@ package ladder.view;
 
 import ladder.domain.GameUtils;
 import ladder.domain.LadderDTO;
-import ladder.domain.LadderFormat;
 import ladder.domain.Row;
 
 public class LadderBuilder {
@@ -11,11 +10,11 @@ public class LadderBuilder {
         StringBuilder builder = dto.getBuilder();
         if (row.isStep(boolPosition)) {
             //최고 이름 길이에 맞게 "-" 더하기
-            LadderFormat.formatStepString(dto);
+            GameUtils.formatStepString(dto);
             return builder.toString();
         }
         //최고 이름 길이에 맞게 " " 더하기
-        LadderFormat.formatSpaceString(dto);
+        GameUtils.formatSpaceString(dto);
         return builder.toString();
     }
 
@@ -32,7 +31,7 @@ public class LadderBuilder {
 
     private static String buildRow(LadderDTO dto, Row row) {
         //add a space before each row for as many times as the max name length
-        LadderFormat.formatRow(dto);
+        GameUtils.formatRow(dto);
 
         //append ladder parts to string
         final int NUMBER_OF_PRINTS = 2 * dto.getPlayerNames().length - 1;
@@ -55,7 +54,7 @@ public class LadderBuilder {
         StringBuilder builder = dto.getBuilder();
 
         for (String name : dto.getPlayerNames()) {
-            LadderFormat.formatName(dto, name);
+            GameUtils.formatName(dto, name);
             builder.append(name);
         }
         return builder.toString();

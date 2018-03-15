@@ -4,9 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static ladder.domain.LadderFormat.*;
+import static ladder.domain.GameUtils.*;
 
-public class LadderFormatTest {
+public class GameUtilsTest {
     private StringBuilder builder;
     private LadderDTO dto;
 
