@@ -8,7 +8,7 @@ public class GameUtils {
     private static final int MIN_HEIGHT = 2;
 
     public static boolean isOverCharLimit(String names) {
-        String[] splitNames = names.split(",");
+        String[] splitNames = names.split(",\\s*");
         for (String name : splitNames) {
             if (name.length() > CHAR_LIMIT) {
                 return true;
@@ -18,7 +18,7 @@ public class GameUtils {
     }
 
     public static boolean isNotEnoughNames(String names) {
-        String[] splitNames = names.split(",");
+        String[] splitNames = names.split(",\\s*");
         return splitNames.length < MIN_NUMBER_OF_NAMES;
     }
 

@@ -8,7 +8,7 @@ public class LadderGame {
     LadderDTO dto = new LadderDTO();
 
     public LadderGame(String names, int ladderHeight) {
-        String[] playerNames = names.split(",");
+        String[] playerNames = names.split(",\\s*");
         ArrayList<Row> ladder = new ArrayList<>();
 
         dto.setPlayerNames(playerNames);
