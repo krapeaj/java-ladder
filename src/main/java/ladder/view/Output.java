@@ -1,6 +1,10 @@
 package ladder.view;
 
 import ladder.domain.LadderGame;
+import ladder.domain.Player;
+import ladder.domain.Prize;
+
+import java.util.Map;
 
 public class Output {
 
@@ -31,5 +35,11 @@ public class Output {
     public static void printLadder(LadderGame game) {
         String ladder = game.startBuild();
         System.out.println(ladder);
+    }
+
+    public static void printResult(LadderGame game, Player player){
+        Map<Player, Prize> result = game.generateResult();
+        System.out.println("실행 결과:");
+        System.out.println(result.get(player).getPrize());
     }
 }

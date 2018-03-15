@@ -21,6 +21,7 @@ public class LadderGameConsole {
 
         //String ladder = ladderGame.startBuild();
         Output.printLadder(ladderGame);
+        Output.printLadder(ladderGame)
     }
 
     private static String promptUserForNames() {
