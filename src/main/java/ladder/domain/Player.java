@@ -1,9 +1,13 @@
 package ladder.domain;
 
 public class Player {
-    private String name;
+    private String playerName;
 
-    Player(String name){
-        this.name = name;
+    Player(String name) {
+        this.playerName = name;
+    }
+
+    public String getName() {
+        return playerName;
     }
 }

@@ -1,12 +1,14 @@
 package ladder.view;
 
+import ladder.domain.LadderGame;
+
 public class Output {
 
     public static void askForPlayerNames() {
         System.out.println("참여할 사람 이름을 쉼표(,)를 기준으로 입력하세요:");
     }
 
-    public static void askForPrizes(){
+    public static void askForPrizes() {
         System.out.println("실행 결과를 입력하세요:");
     }
 
@@ -26,7 +28,8 @@ public class Output {
         System.out.print("2보다 큰 숫자를 입력해주세요. ");
     }
 
-    public static void printLadder(LadderDTO dto) {
-        System.out.println(dto.getBuilder().toString());
+    public static void printLadder(LadderGame game) {
+        String ladder = game.startBuild();
+        System.out.println(ladder);
     }
 }

@@ -8,34 +8,34 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LadderGame {
-    LadderDTO dto = new LadderDTO();
+    private List<Row> ladder = new ArrayList<>();
+    private List<Player> players = new ArrayList<>();
 
     public LadderGame(String names, String inputPrizes, int ladderHeight) {
-        List<Player> players = new ArrayList<>();
+        String[] splitNames = names.split(",\\s*");
+
         Player player;
-        for(String name : names.split(",\\s*")){
+        for (String name : splitNames) {
             player = new Player(name);
             players.add(player);
         }
-        dto.setPlayers(players);
 
         List<Prize> prizes = new ArrayList<>();
         Prize prize;
-        for(String item : inputPrizes.split(",\\s*")){
+        for (String item : inputPrizes.split(",\\s*")) {
             prize = new Prize(item);
             prizes.add(prize);
         }
-        dto.setPrizes(prizes);
 
-        List<Row> ladder = new ArrayList<>();
         for (int i = 0; i < ladderHeight; i++) {
-            Row row = new Row(dto.getPlayers().size());
+            Row row = new Row(splitNames.length);
             ladder.add(row);
         }
-        dto.setLadder(ladder);
     }
 
-    public LadderDTO startBuild() {
-        return LadderBuilder.buildLadder(dto);
+    public String startBuild() {
+        LadderBuilder ladderBuilder = new LadderBuilder();
+
+        return ladderBuilder.buildLadder(ladder, players);
     }
 }

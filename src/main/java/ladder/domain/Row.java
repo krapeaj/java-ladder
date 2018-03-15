@@ -8,8 +8,8 @@ public class Row {
 
     Row(int numberOfPeople) {
         Boolean bool = false;
-        for (int i = 0; i < 2 * numberOfPeople - 1; i++){
-            if(i % 2 == 0){
+        for (int i = 0; i < 2 * numberOfPeople - 1; i++) {
+            if (i % 2 == 0) {
                 rowOfRandomBools.add(true);
                 continue;
             }
@@ -27,6 +27,10 @@ public class Row {
 
     public boolean isStep(int booleanPosition) {
         return rowOfRandomBools.get(booleanPosition);
+    }
+
+    public int getRowLength() {
+        return rowOfRandomBools.size();
     }
 
     List<Boolean> getRow() {

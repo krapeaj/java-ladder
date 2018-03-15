@@ -15,10 +15,12 @@ public class LadderGameConsole {
         String playerNames = promptUserForNames();
         String prizes = promptUserForPrizes();
         int ladderHeight = promptUserForLadderHeight();
+
+        //initialize game
         LadderGame ladderGame = new LadderGame(playerNames, prizes, ladderHeight);
 
-        LadderDTO dto = ladderGame.startBuild();
-        Output.printLadder(dto);
+        //String ladder = ladderGame.startBuild();
+        Output.printLadder(ladderGame);
     }
 
     private static String promptUserForNames() {
@@ -36,7 +38,7 @@ public class LadderGameConsole {
         return names;
     }
 
-    private static String promptUserForPrizes(){
+    private static String promptUserForPrizes() {
         Output.askForPrizes();
         String prizes = Input.takePrizes();
 

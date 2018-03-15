@@ -1,5 +1,6 @@
 package ladder.domain;
 
+import java.util.List;
 import java.util.Random;
 
 public class GameUtils {
@@ -26,12 +27,11 @@ public class GameUtils {
         return userInput <= MIN_HEIGHT;
     }
 
-    public static int findMaxNameLength(LadderDTO dto) {
+    public static int findMaxNameLength(List<Player> players) {
         int currentMax = 0;
-        for (String name : dto.getPlayerNames()) {
-            currentMax = compareLength(name, currentMax);
+        for (Player player : players) {
+            currentMax = compareLength(player.getName(), currentMax);
         }
-        dto.setMaxNameLength(currentMax);
         return currentMax;
     }
 
@@ -47,34 +47,35 @@ public class GameUtils {
         return random.nextBoolean();
     }
 
-    public static String formatName(LadderDTO dto, String name) {
-        for (int i = 0; i < dto.getMaxNameLength() - name.length() + 1; i++) {
-            dto.getBuilder().append(" ");
+    public static String formatName(Player player, int maxNameLength) {
+        StringBuilder formatBuilder = new StringBuilder();
+        for (int i = 0; i < maxNameLength - player.getName().length() + 1; i++) {
+            formatBuilder.append(" ");
         }
-        return dto.getBuilder().toString();
+        return formatBuilder.toString();
     }
 
-    public static String formatRow(LadderDTO dto) {
-        StringBuilder builder = dto.getBuilder();
-        for (int i = 0; i < dto.getMaxNameLength(); i++) {
-            builder.append(" ");
+    public static String formatRow(int maxNameLength) {
+        StringBuilder formatBuilder = new StringBuilder();
+        for (int i = 0; i < maxNameLength; i++) {
+            formatBuilder.append(" ");
         }
-        return builder.toString();
+        return formatBuilder.toString();
     }
 
-    public static String formatStepString(LadderDTO dto) {
-        StringBuilder builder = dto.getBuilder();
-        for (int i = 0; i < dto.getMaxNameLength(); i++) {
-            builder.append("-");
+    public static String formatStepString(int maxNameLength) {
+        StringBuilder formatBuilder = new StringBuilder();
+        for (int i = 0; i < maxNameLength; i++) {
+            formatBuilder.append("-");
         }
-        return builder.toString();
+        return formatBuilder.toString();
     }
 
-    public static String formatSpaceString(LadderDTO dto) {
-        StringBuilder builder = dto.getBuilder();
-        for (int i = 0; i < dto.getMaxNameLength(); i++) {
-            builder.append(" ");
+    public static String formatSpaceString(int maxNameLength) {
+        StringBuilder formatBuilder = new StringBuilder();
+        for (int i = 0; i < maxNameLength; i++) {
+            formatBuilder.append(" ");
         }
-        return builder.toString();
+        return formatBuilder.toString();
     }
 }
