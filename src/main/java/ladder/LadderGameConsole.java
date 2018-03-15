@@ -2,16 +2,26 @@ package ladder;
 
 import ladder.domain.GameUtils;
 import ladder.domain.LadderGame;
+import ladder.domain.Player;
+import ladder.domain.Prize;
 import ladder.view.Input;
 import ladder.view.Output;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class LadderGameConsole {
 
     public static void main(String[] args) {
-        startGame();
+        LadderGame ladderGame = startGame();
+
+        Map<Player, Prize> result = ladderGame.generateResult();
+
+
     }
 
-    private static void startGame() {
+    private static LadderGame startGame() {
         String playerNames = promptUserForNames();
         String prizes = promptUserForPrizes();
         int ladderHeight = promptUserForLadderHeight();
@@ -19,9 +29,9 @@ public class LadderGameConsole {
         //initialize game
         LadderGame ladderGame = new LadderGame(playerNames, prizes, ladderHeight);
 
-        //String ladder = ladderGame.startBuild();
         Output.printLadder(ladderGame);
-        Output.printLadder(ladderGame)
+
+        return ladderGame;
     }
 
     private static String promptUserForNames() {
@@ -63,4 +73,34 @@ public class LadderGameConsole {
         }
         return ladderHeight;
     }
+
+
+    private static void showResult(Map<Player, Prize> result){
+        String prize = promptUserForResultNames(result);
+
+    }
+
+    private static String promptUserForResultNames(Map<Player, Prize> result){
+        Output.askForResultNames();
+        String name = Input.takeNames();
+        List<String> splitNames = Arrays.asList(name.split(",\\s*"));
+
+        for(String name : splitNames){
+
+        }
+        for(Player player : result.keySet()){
+
+            if(existsAMatch(player, name)){
+                return result.get(player).getPrize();
+            }
+        }
+        return promptUserForResultNames(result);
+    }
+
+    private static boolean check
+
+    private static boolean existsAMatch(Player player, String name){
+        return player.getName().equals(name);
+    }
+
 }

@@ -33,9 +33,18 @@ public class Output {
     }
 
     public static void printLadder(LadderGame game) {
-        String ladder = game.startBuild();
+        String ladder = game.startConversion();
         System.out.println(ladder);
     }
+
+    public static void askForResultNames(){
+        System.out.println("결과를 보고 싶은 사람 이름을 쉼표(,)로 구분하여 입력해주세요:");
+    }
+    public static void printNameDoesNotExist(String name){
+        System.out.println(name + " 이란 이름은 게임에 참여하지 않았습니다.");
+    }
+
+
 
     public static void printResult(LadderGame game, Player player){
         Map<Player, Prize> result = game.generateResult();

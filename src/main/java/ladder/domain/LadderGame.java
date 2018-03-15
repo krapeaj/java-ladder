@@ -34,7 +34,7 @@ public class LadderGame {
         }
     }
 
-    public String startBuild() {
+    public String startConversion() {
         LadderBuilder ladderBuilder = new LadderBuilder();
 
         return ladderBuilder.buildLadder(ladder, players);
