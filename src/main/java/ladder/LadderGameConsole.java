@@ -2,12 +2,10 @@ package ladder;
 
 import ladder.domain.GameUtils;
 import ladder.domain.LadderGame;
-import ladder.domain.Player;
-import ladder.domain.Prize;
 import ladder.view.Input;
 import ladder.view.Output;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,9 +14,9 @@ public class LadderGameConsole {
     public static void main(String[] args) {
         LadderGame ladderGame = startGame();
 
-        Map<Player, Prize> result = ladderGame.generateResult();
+        Map<String, String> result = ladderGame.generateResult();
 
-
+        showResult(result);
     }
 
     private static LadderGame startGame() {
@@ -74,33 +72,31 @@ public class LadderGameConsole {
         return ladderHeight;
     }
 
-
-    private static void showResult(Map<Player, Prize> result){
-        String prize = promptUserForResultNames(result);
-
+    private static void showResult(Map<String, String> result) {
+        String name = "";
+        while(!name.equals("all")){
+            name = promptUserForResultName(result);
+            Output.printSelectedResult(result, name);
+        }
+        Output.printAllResult(result);
     }
 
-    private static String promptUserForResultNames(Map<Player, Prize> result){
-        Output.askForResultNames();
+    private static String promptUserForResultName(Map<String, String> result) {
+        Output.askForResultName();
         String name = Input.takeNames();
-        List<String> splitNames = Arrays.asList(name.split(",\\s*"));
-
-        for(String name : splitNames){
-
+        if(name.split(",\\s*").length != 1){
+            Output.printMoreThanOneName();
+            return promptUserForResultName(result);
         }
-        for(Player player : result.keySet()){
-
-            if(existsAMatch(player, name)){
-                return result.get(player).getPrize();
-            }
-        }
-        return promptUserForResultNames(result);
+        matchName(result, name);
+        return name;
     }
 
-    private static boolean check
-
-    private static boolean existsAMatch(Player player, String name){
-        return player.getName().equals(name);
+    private static String matchName(Map<String, String> result, String name) {
+        if (result.keySet().contains(name)) {
+            return name;
+        }
+        Output.printNameDoesNotExist(name);
+        return promptUserForResultName(result);
     }
-
 }

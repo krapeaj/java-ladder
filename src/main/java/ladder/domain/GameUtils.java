@@ -27,10 +27,13 @@ public class GameUtils {
         return userInput <= MIN_HEIGHT;
     }
 
-    public static int findMaxNameLength(List<Player> players) {
+    public static int findMaxNameLength(List<Player> players, List<Prize> prizes) {
         int currentMax = 0;
         for (Player player : players) {
             currentMax = compareLength(player.getName(), currentMax);
+        }
+        for (Prize prize : prizes) {
+            currentMax = compareLength(prize.getName(), currentMax);
         }
         return currentMax;
     }
@@ -47,9 +50,9 @@ public class GameUtils {
         return random.nextBoolean();
     }
 
-    public static String formatName(Player player, int maxNameLength) {
+    public static <T extends Item>  String formatName(T item, int maxNameLength) {
         StringBuilder formatBuilder = new StringBuilder();
-        for (int i = 0; i < maxNameLength - player.getName().length() + 1; i++) {
+        for (int i = 0; i < maxNameLength - item.getName().length() + 1; i++) {
             formatBuilder.append(" ");
         }
         return formatBuilder.toString();

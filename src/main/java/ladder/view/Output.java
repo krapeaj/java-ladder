@@ -1,8 +1,6 @@
 package ladder.view;
 
 import ladder.domain.LadderGame;
-import ladder.domain.Player;
-import ladder.domain.Prize;
 
 import java.util.Map;
 
@@ -37,18 +35,25 @@ public class Output {
         System.out.println(ladder);
     }
 
-    public static void askForResultNames(){
-        System.out.println("결과를 보고 싶은 사람 이름을 쉼표(,)로 구분하여 입력해주세요:");
+    public static void askForResultName() {
+        System.out.println("결과를 보고 싶은 사람의 이름을 입력해주세요 (모두 보고 싶으면 'all'을 입력):");
     }
-    public static void printNameDoesNotExist(String name){
+
+    public static void printMoreThanOneName() {
+        System.out.println("한명의 이름만 입력해주세요.");
+    }
+
+    public static void printNameDoesNotExist(String name) {
         System.out.println(name + " 이란 이름은 게임에 참여하지 않았습니다.");
     }
 
+    public static void printSelectedResult(Map<String, String> result, String name) {
+            System.out.println(name + ": " + result.get(name));
+    }
 
-
-    public static void printResult(LadderGame game, Player player){
-        Map<Player, Prize> result = game.generateResult();
-        System.out.println("실행 결과:");
-        System.out.println(result.get(player).getPrize());
+    public static void printAllResult(Map<String, String> result){
+        for(Map.Entry<String, String> set : result.entrySet()){
+            System.out.println(set.getKey() + ": " + set.getValue());
+        }
     }
 }

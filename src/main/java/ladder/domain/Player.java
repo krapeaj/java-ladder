@@ -1,16 +1,16 @@
 package ladder.domain;
 
-public class Player {
-    private String name;
+public class Player implements Item {
+    private String playerName;
     private int initPosition;
 
-    Player(String name, int initPosition) {
-        this.name = name;
+    Player(String playerName, int initPosition) {
+        this.playerName = playerName;
         this.initPosition = initPosition;
     }
 
-    public String getName() {
-        return name;
+    public String getName(){
+        return playerName;
     }
 
     public int getInitPosition() {

@@ -1,13 +1,13 @@
 package ladder.domain;
 
-public class Prize {
-    private String prize;
+public class Prize implements Item{
+    private String prizeName;
 
-    Prize(String prize) {
-        this.prize = prize;
+    Prize(String prizeName) {
+        this.prizeName = prizeName;
     }
 
-    public String getPrize() {
-        return prize;
+    public String getName(){
+        return prizeName;
     }
 }
