@@ -50,7 +50,7 @@ public class GameUtils {
         return random.nextBoolean();
     }
 
-    public static <T extends Item>  String formatName(T item, int maxNameLength) {
+    public static <T extends Item> String formatName(T item, int maxNameLength) {
         StringBuilder formatBuilder = new StringBuilder();
         for (int i = 0; i < maxNameLength - item.getName().length() + 1; i++) {
             formatBuilder.append(" ");

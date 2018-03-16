@@ -48,16 +48,16 @@ public class Output {
     }
 
     public static void printSelectedResult(Map<String, String> result, String name) {
-            if(name.equals("all")){
-                System.out.print("");
-            }
-            if(!name.equals("all")){
-                System.out.println(name + ": " + result.get(name));
-            }
+        if (name.equals("all")) {
+            System.out.print("");
+        }
+        if (!name.equals("all")) {
+            System.out.println(name + ": " + result.get(name));
+        }
     }
 
-    public static void printAllResult(Map<String, String> result){
-        for(Map.Entry<String, String> set : result.entrySet()){
+    public static void printAllResult(Map<String, String> result) {
+        for (Map.Entry<String, String> set : result.entrySet()) {
             System.out.println(set.getKey() + ": " + set.getValue());
         }
     }

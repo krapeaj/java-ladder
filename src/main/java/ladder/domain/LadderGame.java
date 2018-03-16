@@ -33,7 +33,8 @@ public class LadderGame {
     }
 
     public Map<String, String> generateResult() {
-        Result result = new Result();
+        Result result = new Result(); // static factory method?
         return result.drawResult(ladder, players, prizes);
+
     }
 }

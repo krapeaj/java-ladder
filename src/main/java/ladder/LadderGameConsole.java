@@ -5,8 +5,6 @@ import ladder.domain.LadderGame;
 import ladder.view.Input;
 import ladder.view.Output;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class LadderGameConsole {
@@ -25,11 +23,12 @@ public class LadderGameConsole {
         int ladderHeight = promptUserForLadderHeight();
 
         //initialize game
-        LadderGame ladderGame = new LadderGame(playerNames, prizes, ladderHeight);
+        LadderGame ladderGame = new LadderGame(playerNames, prizes, ladderHeight); //static factory method??
 
         Output.printLadder(ladderGame);
 
         return ladderGame;
+
     }
 
     private static String promptUserForNames() {
@@ -74,7 +73,7 @@ public class LadderGameConsole {
 
     private static void showResult(Map<String, String> result) {
         String name = "";
-        while(!name.equals("all")){
+        while (!name.equals("all")) {
             name = promptUserForResultName(result);
             Output.printSelectedResult(result, name);
         }
@@ -84,7 +83,7 @@ public class LadderGameConsole {
     private static String promptUserForResultName(Map<String, String> result) {
         Output.askForResultName();
         String name = Input.takeNames();
-        if(name.split(",\\s*").length != 1){
+        if (name.split(",\\s*").length != 1) {
             Output.printMoreThanOneName();
             return promptUserForResultName(result);
         }

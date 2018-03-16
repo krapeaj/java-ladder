@@ -1,6 +1,5 @@
 package ladder.domain;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +12,6 @@ public class Result {
             positions.put(player, player.getInitPosition());
             climbDownLadder(ladder, player);
         }
-
         Map<String, String> result = new LinkedHashMap<>();
         for (Player player : players) {
             int prizeIndex = positions.get(player);
@@ -22,58 +20,53 @@ public class Result {
         return result;
     }
 
-    public void climbDownLadder(List<Row> ladder, Player player) {
+    private void climbDownLadder(List<Row> ladder, Player player) {
         for (Row row : ladder) {
             moveRightOrLeft(row, player);
         }
     }
 
-    public void moveRightOrLeft(Row row, Player player) {
-        for (int rowIndex = 2 * positions.get(player); rowIndex < row.getRowLength(); rowIndex ++) {
-            if (moveLeft(player, rowIndex)) {
-                break;
-            }
-            if (moveRight(player, rowIndex, row)) {
-                break;
-            }
+    private Map<Player, Integer> moveRightOrLeft(Row row, Player player) {
+        int position = positions.get(player);
+
+        if (moveLeft(row, player, position)) { // 왼쪽 체크
+            return positions;
         }
+        if (moveRight(row, player, position)) { // 오른쪽 체크
+            return positions;
+        }
+        return positions; // else: position unchanged
     }
 
-    public boolean moveLeft(Player player, int rowIndex) {
-        if (isOnLeftEnd(rowIndex)) {
+    private boolean moveLeft(Row row, Player player, int position) {
+        int leftIndex = 2 * position - 1;
+        if (isOnLeftEnd(position)) {
             return false;
         }
-        if (isOnFrame(rowIndex - 1)) {
+        if (row.isStep(leftIndex)) {
+            positions.put(player, positions.get(player) - 1);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isOnLeftEnd(int position) {
+        return position == 0;
+    }
+
+    private boolean moveRight(Row row, Player player, int position) {
+        int rightIndex = 2 * position + 1;
+        if (isOnRightEnd(position, row)) {
             return false;
         }
-        positions.replace(player, positions.get(player) - 1);
-        return true;
-    }
-
-    public boolean isOnFrame(int rowIndex) {
-        return (rowIndex % 2 == 0);
-    }
-
-    public boolean isOnLeftEnd(int rowIndex) {
-        return rowIndex == 0;
-    }
-
-    public boolean moveRight(Player player, int rowIndex, Row row) {
-        if (isOnRightEnd(rowIndex, row)) {
-            return false;
+        if (row.isStep(rightIndex)) {
+            positions.put(player, positions.get(player) + 1);
+            return true;
         }
-        if (isOnFrame(rowIndex + 1)) {
-            return false;
-        }
-        positions.replace(player, positions.get(player) + 1);
-        return true;
+        return false;
     }
 
-    public boolean isOnRightEnd(int rowIndex, Row row) {
-        return rowIndex == row.getRowLength();
-    }
-
-    public Map<Player, Integer> getPositions() {
-        return positions;
+    private boolean isOnRightEnd(int position, Row row) {
+        return 2 * position == row.getRowLength() - 1;
     }
 }

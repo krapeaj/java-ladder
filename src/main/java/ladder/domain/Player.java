@@ -9,7 +9,7 @@ public class Player implements Item {
         this.initPosition = initPosition;
     }
 
-    public String getName(){
+    public String getName() {
         return playerName;
     }
 
