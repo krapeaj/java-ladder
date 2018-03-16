@@ -93,7 +93,7 @@ public class LadderGameConsole {
     }
 
     private static String matchName(Map<String, String> result, String name) {
-        if (result.keySet().contains(name)) {
+        if (result.keySet().contains(name) || name.equals("all")) {
             return name;
         }
         Output.printNameDoesNotExist(name);

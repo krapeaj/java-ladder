@@ -48,7 +48,12 @@ public class Output {
     }
 
     public static void printSelectedResult(Map<String, String> result, String name) {
-            System.out.println(name + ": " + result.get(name));
+            if(name.equals("all")){
+                System.out.print("");
+            }
+            if(!name.equals("all")){
+                System.out.println(name + ": " + result.get(name));
+            }
     }
 
     public static void printAllResult(Map<String, String> result){
