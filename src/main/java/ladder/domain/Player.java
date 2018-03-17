@@ -2,6 +2,7 @@ package ladder.domain;
 
 public class Player implements Item {
     private String playerName;
+    private String prevDir;
     private int position;
 
     Player(String playerName, int initPosition) {

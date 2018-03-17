@@ -14,9 +14,12 @@ public class Direction {
         Random random = new Random();
 
         if (onEdge.equals("left")){
+            return new Direction(goRightOrDown());
+        }
+        if (onEdge.equals("right")){
             return new Direction(goLeftOrDown());
         }
-        if (onEdge.equals("right") || prevDirIsRight()) {
+        if (prevDirIsRight()) {
             return new Direction(goRightOrDown());
         }
         if (random.nextBoolean()) {
@@ -26,7 +29,6 @@ public class Direction {
         prevDir = "right";
         return new Direction("right");
     }
-
 
     private static boolean prevDirIsRight() {
         return prevDir.equals("right");
@@ -39,8 +41,8 @@ public class Direction {
             prevDir = "right";
             return "right";
         }
-        prevDir = "";
-        return "";
+        prevDir = "down";
+        return "down";
     }
 
     private static String goLeftOrDown() {
@@ -50,8 +52,8 @@ public class Direction {
             prevDir = "left";
             return "left";
         }
-        prevDir = "";
-        return "";
+        prevDir = "down";
+        return "down";
     }
 
     public boolean isLeft() {
