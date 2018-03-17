@@ -29,24 +29,6 @@ public class Row {
         return row.get(column);
     }
 
-    public Point prevPoint(int column) {
-        if (column == 0) { //when there is no prev
-            return row.get(column);
-        }
-        return row.get(column - 1);
-    }
-
-    public Point nextPoint(int column) {
-        if (column + 1 == row.size()) {
-            return row.get(column);
-        }
-        return row.get(column + 1);
-    }
-
-    public List<Point> getRow() {
-        return row;
-    }
-
     public int getRowLength() {
         return rowOfSteps.size();
     }

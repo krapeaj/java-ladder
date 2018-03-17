@@ -10,12 +10,12 @@ public class Point {
     }
 
     public String giveDirection() {
-        if (direction.isLeft()) { //isLeft()
+        if (direction.isLeft()) {
             return "left";
         }
-        if (direction.isRight()) { //isRight()
+        if (direction.isRight()) {
             return "right";
         }
-        return "down"; //isDown()
+        return "down";
     }
 }

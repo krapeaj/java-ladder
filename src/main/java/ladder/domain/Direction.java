@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Direction {
     private String dir;
-    private static String prevDir;
+    //private static String prevDir;
 
     private Direction(String dir) {
         this.dir = dir;
@@ -18,32 +18,25 @@ public class Direction {
             return moveLeftOrDown(rowOfSteps.get(index - 1)); //on right boundary
         }
         if (rowOfSteps.get(index)) {
-            prevDir = "right";
             return new Direction("right");
         }
         if (rowOfSteps.get(index - 1)) {
-            prevDir = "left";
             return new Direction("left");
         }
-        prevDir = "down";
         return new Direction("down");
     }
 
     private static Direction moveRightOrDown(boolean step) {
         if (step) {
-            prevDir = "right";
             return new Direction("right");
         }
-        prevDir = "down";
         return new Direction("down");
     }
 
     private static Direction moveLeftOrDown(boolean prevStep) {
         if (prevStep) {
-            prevDir = "down"; //right boundary -- reset
             return new Direction("left");
         }
-        prevDir = "down";
         return new Direction("down");
     }
 
