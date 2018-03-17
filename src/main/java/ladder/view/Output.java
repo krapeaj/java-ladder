@@ -1,6 +1,7 @@
 package ladder.view;
 
 import ladder.domain.LadderGame;
+import ladder.domain.UserPrompt;
 
 import java.util.Map;
 
@@ -20,6 +21,10 @@ public class Output {
 
     public static void printNotEnoughNames() {
         System.out.print("최소 두명의 이름을 입력해주세요. ");
+    }
+
+    public static void printNotEqualNumbers() {
+        System.out.print("참여자 수와 결과 수가 맞지 않습니다. ");
     }
 
     public static void printOverMaxChars() {
@@ -48,12 +53,10 @@ public class Output {
     }
 
     public static void printSelectedResult(Map<String, String> result, String name) {
-        if (name.equals("all")) {
+        if (UserPrompt.isExit(name)) {
             System.out.print("");
         }
-        if (!name.equals("all")) {
-            System.out.println(name + ": " + result.get(name));
-        }
+        System.out.println(name + ": " + result.get(name));
     }
 
     public static void printAllResult(Map<String, String> result) {

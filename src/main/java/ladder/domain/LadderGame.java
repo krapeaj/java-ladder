@@ -11,18 +11,17 @@ public class LadderGame {
     private List<Player> players = new ArrayList<>();
     private List<Prize> prizes = new ArrayList<>();
 
-    public LadderGame(String names, String inputPrizes, int ladderHeight) {
-        String[] splitNames = names.split(",\\s*");
-        for (int i = 0; i < splitNames.length; i++) {
-            players.add(new Player(splitNames[i], i));
+    public LadderGame(String[] names, String[] inputPrizes, int ladderHeight) {
+        for (int i = 0; i < names.length; i++) {
+            players.add(new Player(names[i], i));
         }
 
-        for (String item : inputPrizes.split(",\\s*")) {
+        for (String item : inputPrizes) {
             prizes.add(new Prize(item));
         }
 
         for (int i = 0; i < ladderHeight; i++) {
-            ladder.add(new Row(splitNames.length));
+            ladder.add(new Row(names.length));
         }
     }
 
