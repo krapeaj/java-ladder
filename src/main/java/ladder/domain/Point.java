@@ -1,30 +1,19 @@
 package ladder.domain;
 
 public class Point {
-    private int position;
     private Direction direction;
 
-    Point(int position, int rowLegth) {
-        String onEdge = "";
-        if(position == 0){
-            onEdge = "left";
-        }
-        if(position == rowLegth){
-            onEdge = "right";
-        }
-        this.position = position;
-        this.direction = Direction.newInstance(onEdge);
+    Point(boolean step) {
+        this.direction = Direction.newInstance(step);
     }
 
-    public int moveToNewPosition() {
+    public String toDirection() {
         if (direction.isLeft()) { //isLeft()
-            return position++;
+            return "left";
         }
-
         if (direction.isRight()) { //isRight()
-            return position--;
+            return "right";
         }
-        //isDown()
-        return position;
+        return "down"; //isDown()
     }
 }

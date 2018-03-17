@@ -37,21 +37,21 @@ public class GameUtilsTest {
 
     @Test
     public void formatStepStringMax5() {
-        assertEquals("-----", formatStepString(dto));
+        assertEquals("-----", formatStep(dto));
     }
 
     @Test
     public void formatStepStringMax3() {
-        assertEquals("---", formatStepString(dto));
+        assertEquals("---", formatStep(dto));
     }
 
     @Test
     public void formatSpaceStringMax5() {
-        assertEquals("     ", formatSpaceString(dto));
+        assertEquals("     ", formatSpace(dto));
     }
 
     @Test
     public void formatSpaceStringMax3() {
-        assertEquals("   ", formatSpaceString(dto));
+        assertEquals("   ", formatSpace(dto));
     }
 }

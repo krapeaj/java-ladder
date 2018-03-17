@@ -32,10 +32,10 @@ public class LadderGame {
         return ladderBuilder.buildLadder(ladder, players, prizes);
     }
 
-    public Map<String, String> generateResult() {
-        Result result = new Result(); // static factory method?
-        return result.drawResult(ladder, players, prizes);
-
-    }
+//    public Map<String, String> generateResult() {
+//        Result result = new Result(); // static factory method?
+//        return result.drawResult(ladder, players, prizes);
+//
+//    }
 }
 

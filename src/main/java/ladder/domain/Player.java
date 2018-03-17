@@ -10,6 +10,14 @@ public class Player implements Item {
         this.position = initPosition;
     }
 
+    public int increasePosition(){
+        return this.position++;
+    }
+
+    public int decreasePosition(){
+        return this.position--;
+    }
+
     public String getName() {
         return playerName;
     }

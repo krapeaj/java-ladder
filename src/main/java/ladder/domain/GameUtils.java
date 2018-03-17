@@ -66,7 +66,7 @@ public class GameUtils {
         return formatBuilder.toString();
     }
 
-    public static String formatStepString(int maxNameLength) {
+    public static String formatStep(int maxNameLength) {
         StringBuilder formatBuilder = new StringBuilder();
         for (int i = 0; i < maxNameLength; i++) {
             formatBuilder.append("-");
@@ -74,7 +74,7 @@ public class GameUtils {
         return formatBuilder.toString();
     }
 
-    public static String formatSpaceString(int maxNameLength) {
+    public static String formatSpace(int maxNameLength) {
         StringBuilder formatBuilder = new StringBuilder();
         for (int i = 0; i < maxNameLength; i++) {
             formatBuilder.append(" ");
