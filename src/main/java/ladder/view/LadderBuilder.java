@@ -41,7 +41,7 @@ public class LadderBuilder {
         String spaces = GameUtils.formatRow(maxNameLength);
         builder.append(spaces); //add a space before each row for as many times as the max name length
 
-        for (int col = 0; col < row.getRowLength(); col ++) { //append ladder parts to string
+        for (int col = 0; col < row.getRowLength(); col++) { //append ladder parts to string
             String ladderPart = createLadderPart(row, col, maxNameLength);
             builder.append(ladderPart);
         }
@@ -51,7 +51,7 @@ public class LadderBuilder {
     private String createLadderPart(Row row, int column, int maxNameLength) {
         StringBuilder builder = new StringBuilder();
         builder.append("|");
-        if(row.isStep(column)){
+        if (row.isStep(column)) {
             return builder.append(GameUtils.formatStep(maxNameLength)).toString(); //최고 이름 길이에 맞게 "-" 더하기
         }
         return builder.append(GameUtils.formatSpace(maxNameLength)).toString(); //최고 이름 길이에 맞게 " " 더하기
@@ -67,16 +67,4 @@ public class LadderBuilder {
         builder.append("\n");
         return builder.toString();
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

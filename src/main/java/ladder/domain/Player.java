@@ -2,7 +2,6 @@ package ladder.domain;
 
 public class Player implements Item {
     private String playerName;
-    private String prevDir;
     private int position;
 
     Player(String playerName, int initPosition) {
@@ -10,11 +9,11 @@ public class Player implements Item {
         this.position = initPosition;
     }
 
-    public int increasePosition(){
+    public int increasePosition() {
         return this.position++;
     }
 
-    public int decreasePosition(){
+    public int decreasePosition() {
         return this.position--;
     }
 

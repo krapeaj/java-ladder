@@ -1,10 +1,12 @@
 package ladder.domain;
 
+import java.util.List;
+
 public class Point {
     private Direction direction;
 
-    Point(boolean step) {
-        this.direction = Direction.newInstance(step);
+    Point(List<Boolean> rowOfSteps, int index) {
+        this.direction = Direction.newInstance(rowOfSteps, index);
     }
 
     public String toDirection() {
