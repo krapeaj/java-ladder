@@ -30,10 +30,13 @@ public class LadderGameConsole {
     }
 
     private static void showResult(Map<String, String> result) {
-
-        String name = UserPrompt.promptUserForResultName(result);
-        Output.printSelectedResult(result, name);
-
-        Output.printAllResult(result);
+        String name = "";
+        while (!UserPrompt.isExit(name)) {
+            name = UserPrompt.promptUserForResultName(result);
+            Output.printSelectedResult(result, name);
+        }
+        if (name.equals("all")) {
+            Output.printAllResult(result);
+        }
     }
 }

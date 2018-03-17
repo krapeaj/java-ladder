@@ -53,7 +53,7 @@ public class Output {
     }
 
     public static void printSelectedResult(Map<String, String> result, String name) {
-        if (UserPrompt.isExit(name)) {
+        if (!UserPrompt.isExit(name)) {
             System.out.print("");
         }
         System.out.println(name + ": " + result.get(name));
