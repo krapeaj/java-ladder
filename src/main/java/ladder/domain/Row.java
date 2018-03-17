@@ -4,6 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Row {
+    private List<Point> row = new ArrayList<>();
+
+    Row(int numberOfPeople) {
+
+        for (int i = 0; i < numberOfPeople; i++) {
+            row.add(new Point(i, Direction.newInstance()));
+        }
+    }
+}
+
+
+//---------------------------------------------------------------------------------------------------
+
+    /*
     private List<Boolean> rowOfRandomBools = new ArrayList<>();
 
     Row(int numberOfPeople) {

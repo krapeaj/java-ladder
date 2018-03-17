@@ -28,7 +28,6 @@ public class LadderGameConsole {
         Output.printLadder(ladderGame);
 
         return ladderGame;
-
     }
 
     private static String promptUserForNames() {
