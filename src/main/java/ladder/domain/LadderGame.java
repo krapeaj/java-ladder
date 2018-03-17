@@ -4,6 +4,7 @@ import ladder.view.LadderBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LadderGame {
     private List<Row> ladder = new ArrayList<>();
@@ -31,10 +32,9 @@ public class LadderGame {
         return ladderBuilder.buildLadder(ladder, players, prizes);
     }
 
-//    public Map<String, String> generateResult() {
-//        Result result = new Result(); // static factory method?
-//        return result.drawResult(ladder, players, prizes);
-//
-//    }
-}
+    public Map<String, String> generateResult() {
+        Result result = new Result(); // static factory method?
+        return result.drawResult(ladder, players, prizes);
 
+    }
+}

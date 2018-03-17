@@ -12,9 +12,9 @@ public class LadderGameConsole {
     public static void main(String[] args) {
         LadderGame ladderGame = startGame();
 
-        //Map<String, String> result = ladderGame.generateResult();
+        Map<String, String> result = ladderGame.generateResult();
 
-        //showResult(result);
+        showResult(result);
     }
 
     private static LadderGame startGame() {

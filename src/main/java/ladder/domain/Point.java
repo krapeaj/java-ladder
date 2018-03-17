@@ -9,7 +9,7 @@ public class Point {
         this.direction = Direction.newInstance(rowOfSteps, index);
     }
 
-    public String toDirection() {
+    public String giveDirection() {
         if (direction.isLeft()) { //isLeft()
             return "left";
         }

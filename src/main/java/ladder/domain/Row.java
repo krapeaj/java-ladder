@@ -43,6 +43,10 @@ public class Row {
         return row.get(column + 1);
     }
 
+    public List<Point> getRow() {
+        return row;
+    }
+
     public int getRowLength() {
         return rowOfSteps.size();
     }
@@ -51,26 +55,3 @@ public class Row {
         return rowOfSteps.get(booleanPosition);
     }
 }
-
-
-//---------------------------------------------------------------------------------------------------
-
-    /*
-
-    Row(int numberOfPeople) {
-
-    }
-
-
-
-
-
-    public int getRowLength() {
-        return rowOfSteps.size();
-    }
-
-    List<Boolean> getRow() {
-        return rowOfSteps;
-    }
-}
-*/
