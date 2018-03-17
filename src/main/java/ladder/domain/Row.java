@@ -9,9 +9,10 @@ public class Row {
     Row(int numberOfPeople) {
 
         for (int i = 0; i < numberOfPeople; i++) {
-            row.add(new Point(i, Direction.newInstance()));
+            row.add(new Point(i, numberOfPeople));
         }
     }
+
 }
 
 
@@ -51,3 +52,4 @@ public class Row {
         return rowOfRandomBools;
     }
 }
+*/
