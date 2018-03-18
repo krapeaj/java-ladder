@@ -15,17 +15,17 @@ public class PlayerTest {
     }
 
     @Test
-    public void changePositionMinus() {
-        assertEquals(0, player.changePosition("left"));
+    public void changePositionDecrease() {
+        assertEquals(0, player.changePosition(0));
     }
 
     @Test
-    public void changePositionPlus() {
-        assertEquals(2, player.changePosition("right"));
+    public void changePositionIncrease() {
+        assertEquals(2, player.changePosition(2));
     }
 
     @Test
     public void changePositionNoChange() {
-        assertEquals(1, player.changePosition("down"));
+        assertEquals(1, player.changePosition(1));
     }
 }

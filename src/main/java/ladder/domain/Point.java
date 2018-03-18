@@ -3,19 +3,21 @@ package ladder.domain;
 import java.util.List;
 
 public class Point {
-    private Direction direction;
+    private final int index;
+    private final Direction direction;
 
     Point(List<Boolean> rowOfSteps, int playerIndex) {
+        this.index = playerIndex;
         this.direction = Direction.newInstance(rowOfSteps, playerIndex);
     }
 
-    public String giveDirection() {
+    public int assignNextIndex() {
         if (direction.isLeft()) {
-            return "left";
+            return index - 1;
         }
         if (direction.isRight()) {
-            return "right";
+            return index + 1;
         }
-        return "down";
+        return index;
     }
 }

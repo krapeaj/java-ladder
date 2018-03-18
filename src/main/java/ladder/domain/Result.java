@@ -21,7 +21,7 @@ public class Result {
     private void climbDownLadder(List<Row> ladder, Player player) {
         for (Row row : ladder) {
             Point point = row.onPoint(player.getPosition()); //현재 플레이어의 포지션에 해당하는 포인트를 호출
-            player.changePosition(point.giveDirection()); //그 포인트에 해당하는 방향(왼쪽/오른쪽)에 따른 플레이어의 포지션 증가/감소
+            player.changePosition(point.assignNextIndex()); //그 포인트에 해당하는 방향(왼쪽/오른쪽)에 따른 플레이어의 포지션 증가/감소
         }
     }
 }

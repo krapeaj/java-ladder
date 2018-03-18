@@ -9,14 +9,8 @@ public class Player implements Item {
         this.position = initPosition;
     }
 
-    public int changePosition(String direction) {
-        if (direction.equals("right")) {
-            return ++this.position;
-        }
-        if (direction.equals("left")) {
-            return --this.position;
-        }
-        return this.position;
+    public int changePosition(int position) {
+        return this.position = position;
     }
 
     public String getName() {

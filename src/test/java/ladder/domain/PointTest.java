@@ -21,18 +21,18 @@ public class PointTest {
     @Test
     public void giveDirectionLeftEnd() {
         point = new Point(rowOfSteps, 0);
-        assertEquals("right", point.giveDirection());
+        assertEquals(1, point.assignNextIndex());
     }
 
     @Test
     public void giveDirectionRightEnd() {
         point = new Point(rowOfSteps, 5);
-        assertEquals("down", point.giveDirection());
+        assertEquals(5, point.assignNextIndex());
     }
 
     @Test
     public void giveDirectionMiddle() {
         point = new Point(rowOfSteps, 2);
-        assertEquals("down", point.giveDirection());
+        assertEquals(2, point.assignNextIndex());
     }
 }

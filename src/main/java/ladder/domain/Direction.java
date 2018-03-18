@@ -3,10 +3,12 @@ package ladder.domain;
 import java.util.List;
 
 public class Direction {
-    private String dir;
+    private boolean left;
+    private boolean right;
 
-    private Direction(String dir) {
-        this.dir = dir;
+    private Direction(boolean left, boolean right) {
+        this.left = left;
+        this.right = right;
     }
 
     public static Direction newInstance(List<Boolean> rowOfSteps, int playerIndex) {
@@ -17,33 +19,33 @@ public class Direction {
             return moveLeftOrDown(rowOfSteps.get(playerIndex - 1)); //on right boundary
         }
         if (rowOfSteps.get(playerIndex)) {
-            return new Direction("right");
+            return new Direction(false, true);
         }
         if (rowOfSteps.get(playerIndex - 1)) {
-            return new Direction("left");
+            return new Direction(true, false);
         }
-        return new Direction("down");
+        return new Direction(false, false);
     }
 
     private static Direction moveRightOrDown(boolean step) {
         if (step) {
-            return new Direction("right");
+            return new Direction(false, true);
         }
-        return new Direction("down");
+        return new Direction(false, false);
     }
 
     private static Direction moveLeftOrDown(boolean prevStep) {
         if (prevStep) {
-            return new Direction("left");
+            return new Direction(true, false);
         }
-        return new Direction("down");
+        return new Direction(false, false);
     }
 
     public boolean isLeft() {
-        return dir.equals("left");
+        return left;
     }
 
     public boolean isRight() {
-        return dir.equals("right");
+        return right;
     }
 }
