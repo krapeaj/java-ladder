@@ -53,10 +53,9 @@ public class Output {
     }
 
     public static void printSelectedResult(Map<String, String> result, String name) {
-        if (!UserPrompt.isExit(name)) {
-            System.out.print("");
+        if (!UserPrompt.isExit(name)){
+            System.out.println(name + ": " + result.get(name));
         }
-        System.out.println(name + ": " + result.get(name));
     }
 
     public static void printAllResult(Map<String, String> result) {

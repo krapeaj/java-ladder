@@ -2,13 +2,15 @@ package ladder.view;
 
 import ladder.domain.*;
 
+import static ladder.domain.GameUtils.*;
+
 import java.util.List;
 
 public class LadderBuilder {
 
     public String buildLadder(List<Row> ladder, List<Player> players, List<Prize> prizes) {
         StringBuilder builder = new StringBuilder();
-        int maxNameLength = GameUtils.findMaxNameLength(players, prizes);
+        int maxNameLength = findMaxNameLength(players, prizes);
 
         String startLine = createLineOfUserInput(players, maxNameLength); //이름을 먼저 builder 에 더하기
 
@@ -38,29 +40,29 @@ public class LadderBuilder {
 
     private String buildRow(Row row, int maxNameLength) {
         StringBuilder builder = new StringBuilder();
-        String spaces = GameUtils.formatRow(maxNameLength);
+        String spaces = formatRow(maxNameLength);
         builder.append(spaces); //add a space before each row for as many times as the max name length
 
         for (int col = 0; col < row.getRowLength(); col++) { //append ladder parts to string
-            String ladderPart = createLadderPart(row, col, maxNameLength);
+            String ladderPart = createLadderPart(row.isStep(col), maxNameLength);
             builder.append(ladderPart);
         }
         return builder.toString();
     }
 
-    private String createLadderPart(Row row, int column, int maxNameLength) {
+    String createLadderPart(boolean isStep, int maxNameLength) {
         StringBuilder builder = new StringBuilder();
         builder.append("|");
-        if (row.isStep(column)) {
-            return builder.append(GameUtils.formatStep(maxNameLength)).toString(); //최고 이름 길이에 맞게 "-" 더하기
+        if (isStep) {
+            return builder.append(formatStep(maxNameLength)).toString(); //최고 이름 길이에 맞게 "-" 더하기
         }
-        return builder.append(GameUtils.formatSpace(maxNameLength)).toString(); //최고 이름 길이에 맞게 " " 더하기
+        return builder.append(formatSpace(maxNameLength)).toString(); //최고 이름 길이에 맞게 " " 더하기
     }
 
     <T extends Item> String createLineOfUserInput(List<T> items, int maxNameLength) {
         StringBuilder builder = new StringBuilder();
         for (T item : items) {
-            String spaces = GameUtils.formatName(item, maxNameLength);
+            String spaces = formatName(item, maxNameLength);
             builder.append(spaces);
             builder.append(item.getName());
         }

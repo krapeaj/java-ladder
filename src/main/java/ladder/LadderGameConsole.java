@@ -2,6 +2,7 @@ package ladder;
 
 import ladder.domain.LadderGame;
 import ladder.domain.UserPrompt;
+import ladder.view.Input;
 import ladder.view.Output;
 
 import java.util.Map;

@@ -3,7 +3,7 @@ package ladder.domain;
 public class Prize implements Item {
     private String prizeName;
 
-    Prize(String prizeName) {
+    public Prize(String prizeName) {
         this.prizeName = prizeName;
     }
 

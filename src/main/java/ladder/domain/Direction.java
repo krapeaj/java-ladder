@@ -4,23 +4,22 @@ import java.util.List;
 
 public class Direction {
     private String dir;
-    //private static String prevDir;
 
     private Direction(String dir) {
         this.dir = dir;
     }
 
-    public static Direction newInstance(List<Boolean> rowOfSteps, int index) {
-        if (index == 0) {
-            return moveRightOrDown(rowOfSteps.get(index)); //on left boundary
+    public static Direction newInstance(List<Boolean> rowOfSteps, int playerIndex) {
+        if (playerIndex == 0) {
+            return moveRightOrDown(rowOfSteps.get(playerIndex)); //on left boundary
         }
-        if (index == rowOfSteps.size()) {
-            return moveLeftOrDown(rowOfSteps.get(index - 1)); //on right boundary
+        if (playerIndex == rowOfSteps.size()) {
+            return moveLeftOrDown(rowOfSteps.get(playerIndex - 1)); //on right boundary
         }
-        if (rowOfSteps.get(index)) {
+        if (rowOfSteps.get(playerIndex)) {
             return new Direction("right");
         }
-        if (rowOfSteps.get(index - 1)) {
+        if (rowOfSteps.get(playerIndex - 1)) {
             return new Direction("left");
         }
         return new Direction("down");

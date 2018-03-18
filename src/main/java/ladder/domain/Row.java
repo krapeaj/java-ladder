@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Row {
     private List<Boolean> rowOfSteps = new ArrayList<>();
-    private List<Point> row = new ArrayList<>();
+    private List<Point> rowOfPoints = new ArrayList<>();
 
     Row(int numberOfPeople) {
         Boolean bool = false;
@@ -14,7 +14,7 @@ public class Row {
             rowOfSteps.add(bool);
         }
         for (int i = 0; i < numberOfPeople; i++) {
-            row.add(new Point(rowOfSteps, i));
+            rowOfPoints.add(new Point(rowOfSteps, i));
         }
     }
 
@@ -26,7 +26,7 @@ public class Row {
     }
 
     public Point onPoint(int column) {
-        return row.get(column);
+        return rowOfPoints.get(column);
     }
 
     public int getRowLength() {

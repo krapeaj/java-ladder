@@ -40,7 +40,7 @@ public class UserPrompt {
 
     public static int promptUserForLadderHeight() {
         Output.askForLadderHeight();
-        int ladderHeight = Input.takeHeight();
+        int ladderHeight = Integer.parseInt(Input.takeHeight());
         if (isUnderMinHeight(ladderHeight)) {
             Output.printUnderMinHeight();
             return promptUserForLadderHeight();
@@ -82,7 +82,7 @@ public class UserPrompt {
         return promptUserForResultName(result);
     }
 
-    private static boolean inNames(Map<String, String> result, String name) {
+    static boolean inNames(Map<String, String> result, String name) {
         if (result.keySet().contains(name)) {
             return true;
         }
