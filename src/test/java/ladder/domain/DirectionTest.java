@@ -10,28 +10,35 @@ import static org.junit.Assert.*;
 
 public class DirectionTest {
     private List<Boolean> rowOfSteps;
+    private Point point;
 
     @Before
     public void setUp() throws Exception {
         rowOfSteps = Arrays.asList(false, true, false, false, true);
+
     }
 
     @Test
-    public void newInstanceLeftEnd() {
-        Direction direction = Direction.newInstance(rowOfSteps, 0);
+    public void goDown() {
+        point = new Point(rowOfSteps, 3);
+        Direction direction = Direction.goDown();
         assertEquals(false, direction.isLeft());
+        assertEquals(false, direction.isRight());
     }
 
     @Test
-    public void newInstanceRightEnd() {
-        Direction direction = Direction.newInstance(rowOfSteps, 5);
+    public void toTheLeft() {
+        point = new Point(rowOfSteps, 2);
+        Direction direction = Direction.toTheLeft();
         assertEquals(true, direction.isLeft());
+        assertEquals(false, direction.isRight());
     }
 
     @Test
-    public void newInstanceMiddle() {
-        Direction direction = Direction.newInstance(rowOfSteps, 3);
+    public void toTheRight() {
+        point = new Point(rowOfSteps, 1);
+        Direction direction = Direction.toTheRight();
         assertEquals(false, direction.isLeft());
-        assertEquals(false, direction.isRight()); //if neither isLeft nor isRight, then direction is "down"
+        assertEquals(true, direction.isRight());
     }
 }

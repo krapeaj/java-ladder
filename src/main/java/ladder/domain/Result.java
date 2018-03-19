@@ -13,7 +13,7 @@ public class Result {
         Map<String, String> result = new LinkedHashMap<>();
         for (Player player : players) {
             Prize prize = prizes.get(player.getPosition());
-            result.put(player.getName(), prize.getName());
+            result.put(player.getName(), prize.getName()); //이름과 프라이즈 맵핑
         }
         return result;
     }

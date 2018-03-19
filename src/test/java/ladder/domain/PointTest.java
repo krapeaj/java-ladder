@@ -19,20 +19,38 @@ public class PointTest {
     }
 
     @Test
-    public void giveDirectionLeftEnd() {
+    public void stepIsOnTheLeftOnLeftEnd() {
         point = new Point(rowOfSteps, 0);
-        assertEquals(1, point.assignNextIndex());
+        assertEquals(false, point.stepIsOnTheLeft(rowOfSteps));
     }
 
     @Test
-    public void giveDirectionRightEnd() {
+    public void stepIsOnTheLeftNotOnLeftEnd() {
+        point = new Point(rowOfSteps, 1);
+        assertEquals(true, point.stepIsOnTheLeft(rowOfSteps));
+    }
+
+    @Test
+    public void stepIsOnTheRightOnRightEnd() {
         point = new Point(rowOfSteps, 5);
-        assertEquals(5, point.assignNextIndex());
+        assertEquals(false, point.stepIsOnTheRight(rowOfSteps));
     }
 
     @Test
-    public void giveDirectionMiddle() {
-        point = new Point(rowOfSteps, 2);
-        assertEquals(2, point.assignNextIndex());
+    public void stepIsOnTheRightNotOnRightEnd() {
+        point = new Point(rowOfSteps, 3);
+        assertEquals(true, point.stepIsOnTheRight(rowOfSteps));
+    }
+
+    @Test
+    public void assignNextIndexIncrease() {
+        point = new Point(rowOfSteps, 3);
+        assertEquals(4, point.assignNextIndex());
+    }
+
+    @Test
+    public void assignNextIndexDecrease() {
+        point = new Point(rowOfSteps, 4);
+        assertEquals(3, point.assignNextIndex());
     }
 }
