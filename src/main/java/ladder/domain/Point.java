@@ -8,6 +8,7 @@ public class Point {
 
     Point(List<Boolean> rowOfSteps, int playerIndex) {
         this.index = playerIndex;
+
         Direction dir;
 
         if(stepIsOnTheLeft(rowOfSteps)){ //왼쪽에 스탭이 있는지
@@ -42,6 +43,7 @@ public class Point {
             return false;
         }
         return rowOfSteps.get(index);
+
     }
 
     public int assignNextIndex() {

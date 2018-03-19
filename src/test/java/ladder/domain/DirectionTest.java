@@ -15,7 +15,6 @@ public class DirectionTest {
     @Before
     public void setUp() throws Exception {
         rowOfSteps = Arrays.asList(false, true, false, false, true);
-
     }
 
     @Test

@@ -19,6 +19,7 @@ public class Direction {
 
     public static Direction toTheRight() {
         return new Direction(false, true);
+
     }
 
     public boolean isLeft() {
