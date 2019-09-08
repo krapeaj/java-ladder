@@ -1,8 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 version = '1.0.0'
 sourceCompatibility = 1.8
+mainClassName = 'ladder.LadderGameConsole'
 
 repositories {
     mavenCentral()
@@ -15,3 +17,8 @@ dependencies {
     testCompile('junit:junit:4.12')
     testCompile('org.assertj:assertj-core:3.9.0')
 }
+
+run {
+    standardInput = System.in
+}
+

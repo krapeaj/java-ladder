@@ -8,31 +8,31 @@ import java.util.Map;
 public class Output {
 
     public static void askForPlayerNames() {
-        System.out.println("참여할 사람 이름을 쉼표(,)를 기준으로 입력하세요:");
+        System.out.println("Enter the names of the participants, separated by (','):");
     }
 
     public static void askForPrizes() {
-        System.out.println("실행 결과를 입력하세요:");
+        System.out.println("Enter prizes:");
     }
 
     public static void askForLadderHeight() {
-        System.out.println("최대 사다리 높이는 몇 개 인가요?");
+        System.out.println("Enter ladder height:");
     }
 
     public static void printNotEnoughNames() {
-        System.out.print("최소 두명의 이름을 입력해주세요. ");
+        System.out.print("Needs at least 2 names.");
     }
 
     public static void printNotEqualNumbers() {
-        System.out.print("참여자 수와 결과 수가 맞지 않습니다. ");
+        System.out.print("The number of names must equal the number of prizes");
     }
 
     public static void printOverMaxChars() {
-        System.out.print("이름은 최대 다섯 자 이하로 입력해주세요. ");
+        System.out.print("A name must be less than 5 characters.");
     }
 
     public static void printUnderMinHeight() {
-        System.out.print("2보다 큰 숫자를 입력해주세요. ");
+        System.out.print("Needs height of at least 2.");
     }
 
     public static void printLadder(LadderGame game) {
@@ -41,15 +41,15 @@ public class Output {
     }
 
     public static void askForResultName() {
-        System.out.println("결과를 보고 싶은 사람의 이름을 입력해주세요 (모두 보고 싶으면 'all'을 입력):");
+        System.out.println("Enter the name of a participant to see his/her result ('all' if want to see all):");
     }
 
     public static void printMoreThanOneName() {
-        System.out.println("한명의 이름만 입력해주세요.");
+        System.out.println("Enter only one name.");
     }
 
     public static void printNameDoesNotExist(String name) {
-        System.out.println(name + " 이란 이름은 게임에 참여하지 않았습니다.");
+        System.out.println(name + " is not in this game.");
     }
 
     public static void printSelectedResult(Map<String, String> result, String name) {
